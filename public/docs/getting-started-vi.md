@@ -43,10 +43,10 @@ Tiện ích Chrome tự động trả lời các bài đăng trên X (Twitter) b
 - Bot hiển thị thông báo: "⚠️ You don't have an account yet"
 - Nhấp nút "**💳 Buy License**"
 - Chọn gói phù hợp:
-  - **Trial**: 7 ngày, 100 phản hồi (dùng thử)
-  - **Basic**: 30 ngày, 1,000 phản hồi
-  - **Pro**: 30 ngày, 10,000 phản hồi
-  - **Enterprise**: Tùy chỉnh, không giới hạn
+  - **Trial**: MIỄN PHÍ - 39 phản hồi, 1 tài khoản (dùng thử)
+  - **Starter**: $9/tháng - 7,999 phản hồi, 5 tài khoản (cá nhân)
+  - **Pro**: $19/tháng - 9,999 phản hồi, 10 tài khoản (chuyên nghiệp)
+  - **Max**: $79/tháng - 29,999 phản hồi, 20 tài khoản (đội nhóm)
 - Thanh toán theo hướng dẫn
 - Tài khoản tự động được tạo sau khi thanh toán thành công
 - Đóng tab Telegram và quay lại tiện ích
@@ -88,12 +88,12 @@ Tiện ích Chrome tự động trả lời các bài đăng trên X (Twitter) b
 
 ## Gói sử dụng
 
-| Gói | Thời hạn | Hạn mức | Phù hợp với |
-|-----|----------|---------|-------------|
-| **Trial** | 7 ngày | 100 phản hồi | Dùng thử tính năng |
-| **Basic** | 30 ngày | 1,000 phản hồi | Người dùng cá nhân |
-| **Pro** | 30 ngày | 10,000 phản hồi | Người dùng thương mại |
-| **Enterprise** | Tùy chỉnh | Không giới hạn | Doanh nghiệp, đội nhóm |
+| Gói | Giá | Số phản hồi | Số tài khoản | Phù hợp với |
+|-----|-----|-------------|--------------|-------------|
+| **Trial** | MIỄN PHÍ | 39 | 1 | Dùng thử tính năng |
+| **Starter** | $9/tháng | 7,999 | 5 | Người dùng cá nhân |
+| **Pro** | $19/tháng | 9,999 | 10 | Người dùng chuyên nghiệp |
+| **Max** | $79/tháng | 29,999 | 20 | Đội nhóm & doanh nghiệp |
 
 *Xem giá chi tiết trong bot Telegram khi mua license*
 

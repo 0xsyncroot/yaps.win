@@ -43,10 +43,10 @@ Chrome Extension for AI-powered automation on X (Twitter).
 - Bot displays: "⚠️ You don't have an account yet"
 - Click "**💳 Buy License**" button
 - Select suitable plan:
-  - **Trial**: 7 days, 100 replies (trial)
-  - **Basic**: 30 days, 1,000 replies
-  - **Pro**: 30 days, 10,000 replies
-  - **Enterprise**: Custom, unlimited
+  - **Trial**: FREE - 39 replies, 1 account (trial)
+  - **Starter**: $9/month - 7,999 replies, 5 accounts (personal)
+  - **Pro**: $19/month - 9,999 replies, 10 accounts (professional)
+  - **Max**: $79/month - 29,999 replies, 20 accounts (teams)
 - Complete payment as instructed
 - Account will be created automatically after successful payment
 - Close Telegram tab and return to extension
@@ -88,12 +88,12 @@ Chrome Extension for AI-powered automation on X (Twitter).
 
 ## Pricing Plans
 
-| Plan | Duration | Quota | Best For |
-|------|----------|-------|----------|
-| **Trial** | 7 days | 100 replies | Testing features |
-| **Basic** | 30 days | 1,000 replies | Personal users |
-| **Pro** | 30 days | 10,000 replies | Commercial users |
-| **Enterprise** | Custom | Unlimited | Businesses, teams |
+| Plan | Price | Replies | Accounts | Best For |
+|------|-------|---------|----------|----------|
+| **Trial** | FREE | 39 | 1 | Testing features |
+| **Starter** | $9/month | 7,999 | 5 | Personal users |
+| **Pro** | $19/month | 9,999 | 10 | Professionals |
+| **Max** | $79/month | 29,999 | 20 | Teams & businesses |
 
 *See detailed pricing in Telegram bot when purchasing license*
 
