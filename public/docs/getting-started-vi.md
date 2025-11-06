@@ -43,10 +43,10 @@ Tiện ích Chrome tự động trả lời các bài đăng trên X (Twitter) b
 - Bot hiển thị thông báo: "⚠️ You don't have an account yet"
 - Nhấp nút "**💳 Buy License**"
 - Chọn gói phù hợp:
-  - **Trial**: MIỄN PHÍ - 39 phản hồi, 1 tài khoản (dùng thử)
-  - **Starter**: $9/tháng - 7,999 phản hồi, 5 tài khoản (cá nhân)
-  - **Pro**: $19/tháng - 9,999 phản hồi, 10 tài khoản (chuyên nghiệp)
-  - **Max**: $79/tháng - 29,999 phản hồi, 20 tài khoản (đội nhóm)
+  - **Trial**: MIỄN PHÍ - 399 phản hồi, 1 tài khoản (dùng thử)
+  - **Starter**: $10 - 10,000 phản hồi, 5 tài khoản (cá nhân)
+  - **Pro**: $18 - 20,000 phản hồi, 10 tài khoản (chuyên nghiệp)
+  - **Max**: $84 - 100,000 phản hồi, 20 tài khoản (đội nhóm)
 - Thanh toán theo hướng dẫn
 - Tài khoản tự động được tạo sau khi thanh toán thành công
 - Đóng tab Telegram và quay lại tiện ích
@@ -90,10 +90,10 @@ Tiện ích Chrome tự động trả lời các bài đăng trên X (Twitter) b
 
 | Gói | Giá | Số phản hồi | Số tài khoản | Phù hợp với |
 |-----|-----|-------------|--------------|-------------|
-| **Trial** | MIỄN PHÍ | 39 | 1 | Dùng thử tính năng |
-| **Starter** | $9/tháng | 7,999 | 5 | Người dùng cá nhân |
-| **Pro** | $19/tháng | 9,999 | 10 | Người dùng chuyên nghiệp |
-| **Max** | $79/tháng | 29,999 | 20 | Đội nhóm & doanh nghiệp |
+| **Trial** | MIỄN PHÍ | 399 | 1 | Dùng thử tính năng |
+| **Starter** | $10 | 10,000 | 5 | Người dùng cá nhân |
+| **Pro** | $18 | 20,000 | 10 | Người dùng chuyên nghiệp |
+| **Max** | $84 | 100,0000 | 20 | Đội nhóm & doanh nghiệp |
 
 *Xem giá chi tiết trong bot Telegram khi mua license*
 
@@ -122,8 +122,7 @@ Tiện ích Chrome tự động trả lời các bài đăng trên X (Twitter) b
 ## Hỗ trợ
 
 - Bot Telegram: `@reply_guys_bot` - Gửi tin nhắn để được hỗ trợ
-- GitHub: [github.com/yapswin](https://github.com/yapswin)
-- Email: support@yaps.win
+- Open ticket: `@reply_guys_bot`
 
 ---
 
