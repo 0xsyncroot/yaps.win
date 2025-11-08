@@ -49,10 +49,10 @@ export default function PrivacyPolicy() {
                 Docs
               </Link>
               <Link 
-                href="/tool" 
+                href="/tools" 
                 className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
               >
-                Tool
+                Tools
               </Link>
             </div>
           </div>
