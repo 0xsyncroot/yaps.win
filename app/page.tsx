@@ -41,6 +41,9 @@ export default function LandingPage() {
               <Link href="/docs" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
                 Docs
               </Link>
+              <Link href="/tools" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
+                Tools
+              </Link>
               <a href="https://t.me/yapsbot" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
                 Support
               </a>

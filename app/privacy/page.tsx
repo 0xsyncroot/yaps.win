@@ -48,6 +48,12 @@ export default function PrivacyPolicy() {
               >
                 Docs
               </Link>
+              <Link 
+                href="/tool" 
+                className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+              >
+                Tool
+              </Link>
             </div>
           </div>
         </div>
