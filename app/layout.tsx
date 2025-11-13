@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | Reply Guys"
   },
   
-  description: "Automate your X engagement with AI. Complete automation suite featuring Auto Reply, Auto Post, and content generation. Powered by OpenAI, Grok, and DeepSeek. Free to start, easy setup, trusted by 10K+ users.",
+  description: "Automate your X engagement with AI. Chrome extension for Auto Reply and Auto Post. Powered by OpenAI, Grok, and DeepSeek. Simple setup, customizable settings.",
   
   keywords: [
     "X automation",
@@ -60,8 +60,8 @@ export const metadata: Metadata = {
     alternateLocale: ['vi_VN'],
     url: 'https://yaps.win',
     siteName: 'Reply Guys',
-    title: 'Reply Guys - AI-Powered X (Twitter) Automation',
-    description: 'Automate your X engagement with AI. Auto Reply, Auto Post, and content generation. Trusted by 10K+ users.',
+    title: 'Reply Guys - AI-Powered X Automation',
+    description: 'Automate your X engagement with AI. Auto Reply and Auto Post with simple setup.',
     images: [
       {
         url: '/logo.png',
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     site: '@yapswin',
     creator: '@yapswin',
     title: 'Reply Guys - AI-Powered X Automation',
-    description: 'Automate your X engagement with AI. Auto Reply, Auto Post, content generation. Trusted by 10K+ users.',
+    description: 'Automate your X engagement with AI. Auto Reply and Auto Post with simple setup.',
     images: ['/logo.png'],
   },
   
@@ -168,8 +168,8 @@ export default function RootLayout({
               },
               aggregateRating: {
                 '@type': 'AggregateRating',
-                ratingValue: '4.9',
-                ratingCount: '10000',
+                ratingValue: '4.5',
+                ratingCount: '100',
                 bestRating: '5',
                 worstRating: '1',
               },

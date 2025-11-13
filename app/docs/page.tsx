@@ -68,7 +68,7 @@ function DocsTOC({ currentLang, currentDoc }: { currentLang: string; currentDoc:
   return (
     <div>
       <h2 className="text-sm font-bold mb-4 text-gray-900">Table of Contents</h2>
-      <nav className="space-y-2">
+      <nav className="space-y-1">
         {headings.map((heading) => (
           <a
             key={heading.id}
@@ -80,8 +80,8 @@ function DocsTOC({ currentLang, currentDoc }: { currentLang: string; currentDoc:
                 element.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }
             }}
-            className={`block text-sm rounded-lg px-3 py-2 hover:bg-blue-50 text-gray-600 hover:text-blue-700 transition-all ${
-              heading.level === 1 ? 'font-bold pl-3' :
+            className={`block text-sm rounded-lg px-3 py-2 hover:bg-gray-100 text-gray-600 hover:text-gray-900 transition ${
+              heading.level === 1 ? 'font-semibold pl-3' :
               heading.level === 2 ? 'pl-5' :
               heading.level === 3 ? 'pl-7' :
               'pl-9'
@@ -151,7 +151,7 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 md:p-10 prose prose-base max-w-none">
+    <div className="bg-white rounded-lg border border-gray-200 p-8 md:p-10 prose prose-base max-w-none">
       <ReactMarkdown
         key={`${doc}-${lang}-${content.substring(0, 50)}`}
         remarkPlugins={[remarkGfm]}
@@ -215,7 +215,7 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
             const inline = !className;
             if (inline) {
               return (
-                <code className="bg-blue-50 px-2 py-1 rounded text-sm text-blue-700 font-mono border border-blue-200">
+                <code className="bg-gray-100 px-2 py-1 rounded text-sm text-gray-800 font-mono border border-gray-200">
                   {children}
                 </code>
               );
@@ -227,12 +227,12 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
             );
           },
           pre: ({ children }) => (
-            <pre className="bg-gray-900 rounded-xl p-4 overflow-x-auto mb-4 text-sm shadow-lg">
+            <pre className="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-4 text-sm">
               {children}
             </pre>
           ),
           blockquote: ({ children }) => (
-            <blockquote className="border-l-4 border-blue-500 bg-blue-50 pl-4 py-2 my-4 text-base text-gray-700 rounded-r-lg">
+            <blockquote className="border-l-4 border-gray-400 bg-gray-50 pl-4 py-2 my-4 text-base text-gray-700 rounded-r">
               {children}
             </blockquote>
           ),
@@ -241,7 +241,7 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
             return (
               <a
                 href={href}
-                className={`text-base ${isAnchor ? 'text-blue-600 hover:text-blue-800 font-medium' : 'text-blue-600 hover:text-blue-800 underline font-medium'}`}
+                className={`text-base ${isAnchor ? 'text-gray-900 hover:text-black font-medium' : 'text-gray-900 hover:text-black underline font-medium'}`}
                 target={href?.startsWith('http') ? '_blank' : undefined}
                 rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
                 onClick={isAnchor ? (e) => {
@@ -277,7 +277,7 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
             </div>
           ),
           thead: ({ children }) => (
-            <thead className="bg-gradient-to-r from-gray-50 to-gray-100">
+            <thead className="bg-gray-50">
               {children}
             </thead>
           ),
@@ -303,32 +303,27 @@ export default function DocsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Navigation */}
-      <nav className="bg-white/95 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+      <nav className="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-all">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                Yaps
-              </span>
+            <Link href="/" className="flex items-center gap-2">
+              <img 
+                src="/logo.png" 
+                alt="Reply Guys" 
+                className="w-8 h-8 rounded-lg"
+              />
+              <span className="text-lg font-semibold text-gray-900">Reply Guys</span>
             </Link>
             
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-6">
               <Suspense fallback={<div className="w-32 h-10 bg-gray-100 rounded-lg animate-pulse"></div>}>
                 <DocsLanguageSelector />
               </Suspense>
               
               <Link 
                 href="/" 
-                className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+                className="text-sm text-gray-600 hover:text-gray-900"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
                 Back to Home
               </Link>
             </div>
@@ -406,21 +401,21 @@ function DocsLanguageSelector() {
       </button>
       
       {isLangOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden z-20">
+        <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg border border-gray-200 overflow-hidden z-20">
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => handleLanguageChange(lang.code)}
-              className={`w-full flex items-center gap-3 px-4 py-3 text-sm font-medium transition-all ${
+              className={`w-full flex items-center gap-3 px-4 py-3 text-sm font-medium transition ${
                 currentLang === lang.code 
-                  ? 'bg-blue-50 text-blue-700' 
+                  ? 'bg-gray-900 text-white' 
                   : 'text-gray-700 hover:bg-gray-50'
               }`}
             >
               <FlagIcon code={lang.flag} />
               <span className="flex-1 text-left">{lang.name}</span>
               {currentLang === lang.code && (
-                <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
               )}
@@ -449,7 +444,7 @@ function DocsPageContent() {
     <div className="grid lg:grid-cols-4 gap-8">
       {/* Sidebar */}
       <div className="lg:col-span-1">
-        <div className="bg-white rounded-xl border border-gray-200 p-6 sticky top-24 shadow-sm">
+        <div className="bg-white rounded-lg border border-gray-200 p-6 sticky top-24">
           {/* Docs Navigation */}
           <div className="mb-6">
             <h2 className="text-sm font-bold text-gray-900 mb-3">Documentation</h2>
@@ -458,10 +453,10 @@ function DocsPageContent() {
                 <Link
                   key={doc.id}
                   href={`/docs?doc=${doc.id}&lang=${currentLang}`}
-                  className={`block text-sm px-3 py-2.5 rounded-lg hover:bg-gray-50 transition-all ${
+                  className={`block text-sm px-3 py-2 rounded-lg transition ${
                     currentDoc === doc.id
-                      ? 'bg-gradient-to-r from-blue-50 to-blue-50 text-blue-700 font-bold border-l-4 border-blue-600'
-                      : 'text-gray-600 hover:text-gray-900'
+                      ? 'bg-gray-900 text-white font-medium'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                   }`}
                 >
                   {doc.title}
