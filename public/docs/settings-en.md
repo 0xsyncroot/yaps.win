@@ -1,8 +1,8 @@
 # Settings
 
 ## AI Provider
-- **OpenAI**: GPT-4, GPT-3.5
-- **Grok**: Grok-4-fast-non-reasoning
+- **OpenAI**: GPT-5, GPT-4.1
+- **Grok**: Grok-4
 - **DeepSeek**: DeepSeek Chat
 
 ## Delay Between Replies

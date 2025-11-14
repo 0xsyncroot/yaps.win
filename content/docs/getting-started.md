@@ -131,8 +131,8 @@ Extension sẽ tự động:
 ## Settings
 
 ### AI Provider
-- **OpenAI**: GPT-4, GPT-3.5 và các model khác
-- **Grok**: Grok-4-fast-non-reasoning và các model khác
+- **OpenAI**: GPT-5, GPT-4.1 và các model khác
+- **Grok**: Grok-4 và các model khác
 - **DeepSeek**: DeepSeek Chat và các model khác
 
 ### Delay Between Replies
