@@ -4,67 +4,101 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  /* Lock the marketing site to a light presentation regardless of OS theme.
+     The whole design is tuned for a white canvas; a dark auto-flip would break it. */
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ffffff;
-    --foreground: #171717;
-  }
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 @layer utilities {
-  .bg-grid-white\/10 {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-  
   .text-balance {
     text-wrap: balance;
   }
-}
 
-html {
-  scroll-behavior: smooth;
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Soft indigo radial glow used behind heroes */
+  .bg-hero-glow {
+    background:
+      radial-gradient(60% 55% at 50% 0%, rgba(67, 56, 202, 0.12) 0%, rgba(67, 56, 202, 0) 70%),
+      radial-gradient(40% 40% at 85% 20%, rgba(250, 204, 21, 0.1) 0%, rgba(250, 204, 21, 0) 70%);
+  }
+
+  /* Faint dotted grid for hero backdrops */
+  .bg-dot-grid {
+    background-image: radial-gradient(rgba(67, 56, 202, 0.09) 1px, transparent 1px);
+    background-size: 22px 22px;
+    background-position: -11px -11px;
+    mask-image: radial-gradient(70% 60% at 50% 30%, #000 0%, transparent 75%);
+    -webkit-mask-image: radial-gradient(70% 60% at 50% 30%, #000 0%, transparent 75%);
+  }
+
+  .brand-text-gradient {
+    background-image: linear-gradient(120deg, #4338ca 0%, #6366f1 55%, #4338ca 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 
 *:focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid #4338ca;
   outline-offset: 2px;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar (brand-tinted) */
 .scrollbar-thin::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-track {
-  background: #f3f4f6;
+  background: #f1f5f9;
   border-radius: 4px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: #d1d5db;
+  background: #c7cffe;
   border-radius: 4px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
+  background: #a5b0fc;
 }
 
 /* Firefox */
 .scrollbar-thin {
   scrollbar-width: thin;
-  scrollbar-color: #d1d5db #f3f4f6;
+  scrollbar-color: #c7cffe #f1f5f9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

@@ -9,26 +9,19 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import 'highlight.js/styles/github-dark.css';
 
-interface DocItem {
-  id: string;
-  title: string;
-  path: string;
-  lang?: string;
-}
-
 const languages = [
   { code: 'en', name: 'English', flag: 'US' },
   { code: 'vi', name: 'Tiếng Việt', flag: 'VN' },
 ];
 
 const FlagIcon = ({ code }: { code: string }) => (
-  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full overflow-hidden border border-gray-200 shadow-sm">
-    <img 
+  <span className="inline-flex h-6 w-6 items-center justify-center overflow-hidden rounded-full border border-slate-200 shadow-sm">
+    <img
       src={`https://flagcdn.com/w20/${code.toLowerCase()}.png`}
       srcSet={`https://flagcdn.com/w40/${code.toLowerCase()}.png 2x`}
       width="20"
       alt={code}
-      className="object-cover w-full h-full"
+      className="h-full w-full object-cover"
     />
   </span>
 );
@@ -41,19 +34,19 @@ function DocsTOC({ currentLang, currentDoc }: { currentLang: string; currentDoc:
       try {
         const response = await fetch(`/docs/${currentDoc}-${currentLang}.md`);
         if (!response.ok) return;
-        
+
         const text = await response.text();
         const headingRegex = /^(#{1,4})\s+(.+)$/gm;
         const extractedHeadings: Array<{ id: string; text: string; level: number }> = [];
         let match;
-        
+
         while ((match = headingRegex.exec(text)) !== null) {
           const level = match[1].length;
           const text = match[2];
           const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
           extractedHeadings.push({ id, text, level });
         }
-        
+
         setHeadings(extractedHeadings);
       } catch (err) {
         console.error('Failed to load TOC:', err);
@@ -67,7 +60,7 @@ function DocsTOC({ currentLang, currentDoc }: { currentLang: string; currentDoc:
 
   return (
     <div>
-      <h2 className="text-sm font-bold mb-4 text-gray-900">Table of Contents</h2>
+      <h2 className="mb-4 text-sm font-bold text-slate-900">Table of Contents</h2>
       <nav className="space-y-1">
         {headings.map((heading) => (
           <a
@@ -80,8 +73,8 @@ function DocsTOC({ currentLang, currentDoc }: { currentLang: string; currentDoc:
                 element.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }
             }}
-            className={`block text-sm rounded-lg px-3 py-2 hover:bg-gray-100 text-gray-600 hover:text-gray-900 transition ${
-              heading.level === 1 ? 'font-semibold pl-3' :
+            className={`block rounded-lg px-3 py-2 text-sm text-slate-600 transition hover:bg-brand-50 hover:text-brand-700 ${
+              heading.level === 1 ? 'pl-3 font-semibold' :
               heading.level === 2 ? 'pl-5' :
               heading.level === 3 ? 'pl-7' :
               'pl-9'
@@ -106,18 +99,14 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
       setError(null);
       try {
         const url = `/docs/${doc}-${lang}.md`;
-        console.log('Loading doc:', url);
         const response = await fetch(url, { cache: 'no-store' });
-        
+
         if (!response.ok) {
           throw new Error(`Document not found: ${response.status}`);
         }
-        
+
         const text = await response.text();
-        console.log('Loaded doc:', url, 'length:', text.length);
-        console.log('Content preview:', text.substring(0, 100));
         setContent(text);
-        console.log('Content state updated for:', doc, lang);
       } catch (err) {
         setError('Failed to load documentation');
         console.error('Failed to load doc:', doc, lang, err);
@@ -131,10 +120,10 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64">
+      <div className="flex h-64 items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-sm text-gray-600">Loading documentation...</p>
+          <div className="mx-auto h-12 w-12 animate-spin rounded-full border-b-2 border-brand-600"></div>
+          <p className="mt-4 text-sm text-slate-600">Loading documentation...</p>
         </div>
       </div>
     );
@@ -142,7 +131,7 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
 
   if (error) {
     return (
-      <div className="flex items-center justify-center h-64">
+      <div className="flex h-64 items-center justify-center">
         <div className="text-center">
           <p className="text-sm text-red-600">{error}</p>
         </div>
@@ -151,7 +140,7 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
   }
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-8 md:p-10 prose prose-base max-w-none">
+    <div className="prose prose-base max-w-none rounded-2xl bg-white p-8 shadow-soft ring-1 ring-slate-200/70 md:p-10">
       <ReactMarkdown
         key={`${doc}-${lang}-${content.substring(0, 50)}`}
         remarkPlugins={[remarkGfm]}
@@ -161,7 +150,7 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
             const text = String(children);
             const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
             return (
-              <h1 id={id} className="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-gray-200 pb-4 scroll-mt-24">
+              <h1 id={id} className="mb-6 scroll-mt-24 border-b-2 border-slate-200 pb-4 font-display text-3xl font-bold text-slate-900">
                 {children}
               </h1>
             );
@@ -170,7 +159,7 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
             const text = String(children);
             const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
             return (
-              <h2 id={id} className="text-2xl font-bold mt-10 mb-4 text-gray-900 border-b border-gray-200 pb-3 scroll-mt-24">
+              <h2 id={id} className="mb-4 mt-10 scroll-mt-24 border-b border-slate-200 pb-3 font-display text-2xl font-bold text-slate-900">
                 {children}
               </h2>
             );
@@ -179,7 +168,7 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
             const text = String(children);
             const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
             return (
-              <h3 id={id} className="text-xl font-bold mt-8 mb-3 text-gray-800 scroll-mt-24">
+              <h3 id={id} className="mb-3 mt-8 scroll-mt-24 text-xl font-bold text-slate-800">
                 {children}
               </h3>
             );
@@ -188,23 +177,23 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
             const text = String(children);
             const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
             return (
-              <h4 id={id} className="text-lg font-bold mt-6 mb-2 text-gray-800 scroll-mt-24">
+              <h4 id={id} className="mb-2 mt-6 scroll-mt-24 text-lg font-bold text-slate-800">
                 {children}
               </h4>
             );
           },
           p: ({ children }) => (
-            <p className="mb-4 text-base text-gray-700 leading-relaxed">
+            <p className="mb-4 text-base leading-7 text-slate-700">
               {children}
             </p>
           ),
           ul: ({ children }) => (
-            <ul className="list-disc pl-6 mb-4 space-y-2 text-base text-gray-700">
+            <ul className="mb-4 list-disc space-y-2 pl-6 text-base text-slate-700 marker:text-brand-400">
               {children}
             </ul>
           ),
           ol: ({ children }) => (
-            <ol className="list-decimal pl-6 mb-4 space-y-2 text-base text-gray-700">
+            <ol className="mb-4 list-decimal space-y-2 pl-6 text-base text-slate-700 marker:text-brand-500 marker:font-semibold">
               {children}
             </ol>
           ),
@@ -215,7 +204,7 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
             const inline = !className;
             if (inline) {
               return (
-                <code className="bg-gray-100 px-2 py-1 rounded text-sm text-gray-800 font-mono border border-gray-200">
+                <code className="rounded border border-brand-100 bg-brand-50 px-1.5 py-0.5 font-mono text-sm text-brand-700">
                   {children}
                 </code>
               );
@@ -227,12 +216,12 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
             );
           },
           pre: ({ children }) => (
-            <pre className="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-4 text-sm">
+            <pre className="mb-4 overflow-x-auto rounded-xl bg-slate-900 p-4 text-sm ring-1 ring-slate-800">
               {children}
             </pre>
           ),
           blockquote: ({ children }) => (
-            <blockquote className="border-l-4 border-gray-400 bg-gray-50 pl-4 py-2 my-4 text-base text-gray-700 rounded-r">
+            <blockquote className="my-4 rounded-r-lg border-l-4 border-brand-400 bg-brand-50 py-2 pl-4 text-base text-slate-700">
               {children}
             </blockquote>
           ),
@@ -241,7 +230,7 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
             return (
               <a
                 href={href}
-                className={`text-base ${isAnchor ? 'text-gray-900 hover:text-black font-medium' : 'text-gray-900 hover:text-black underline font-medium'}`}
+                className="font-medium text-brand-700 underline decoration-brand-200 underline-offset-2 hover:text-brand-800 hover:decoration-brand-400"
                 target={href?.startsWith('http') ? '_blank' : undefined}
                 rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
                 onClick={isAnchor ? (e) => {
@@ -260,34 +249,34 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
             );
           },
           strong: ({ children }) => (
-            <strong className="font-bold text-gray-900">
+            <strong className="font-bold text-slate-900">
               {children}
             </strong>
           ),
           em: ({ children }) => (
-            <em className="italic text-gray-700">
+            <em className="italic text-slate-700">
               {children}
             </em>
           ),
           table: ({ children }) => (
-            <div className="overflow-x-auto my-4 rounded-lg border border-gray-200">
+            <div className="my-4 overflow-x-auto rounded-xl border border-slate-200">
               <table className="min-w-full text-sm">
                 {children}
               </table>
             </div>
           ),
           thead: ({ children }) => (
-            <thead className="bg-gray-50">
+            <thead className="bg-slate-50">
               {children}
             </thead>
           ),
           th: ({ children }) => (
-            <th className="border border-gray-300 px-4 py-3 text-left font-bold text-sm text-gray-900">
+            <th className="border border-slate-200 px-4 py-3 text-left text-sm font-bold text-slate-900">
               {children}
             </th>
           ),
           td: ({ children }) => (
-            <td className="border border-gray-300 px-4 py-3 text-sm text-gray-700">
+            <td className="border border-slate-200 px-4 py-3 text-sm text-slate-700">
               {children}
             </td>
           ),
@@ -301,42 +290,38 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
 
 export default function DocsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-slate-50">
       {/* Navigation */}
-      <nav className="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center gap-2">
-              <img 
-                src="/logo.png" 
-                alt="Reply Guys" 
-                className="w-8 h-8 rounded-lg"
-              />
-              <span className="text-lg font-semibold text-gray-900">Reply Guys</span>
+      <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-md">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
+            <Link href="/" className="flex items-center gap-2.5" aria-label="Reply Guys home">
+              <img src="/logo.png" alt="" className="h-8 w-8" />
+              <span className="text-lg font-semibold tracking-tight text-slate-900">Reply Guys</span>
             </Link>
-            
-            <div className="flex items-center gap-6">
-              <Suspense fallback={<div className="w-32 h-10 bg-gray-100 rounded-lg animate-pulse"></div>}>
+
+            <div className="flex items-center gap-4">
+              <Suspense fallback={<div className="h-10 w-32 animate-pulse rounded-lg bg-slate-100"></div>}>
                 <DocsLanguageSelector />
               </Suspense>
-              
-              <Link 
-                href="/" 
-                className="text-sm text-gray-600 hover:text-gray-900"
+
+              <Link
+                href="/"
+                className="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-slate-900"
               >
                 Back to Home
               </Link>
             </div>
           </div>
         </div>
-      </nav>
+      </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <Suspense fallback={
-          <div className="flex items-center justify-center h-64">
+          <div className="flex h-64 items-center justify-center">
             <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-              <p className="mt-4 text-sm text-gray-600">Loading...</p>
+              <div className="mx-auto h-12 w-12 animate-spin rounded-full border-b-2 border-brand-600"></div>
+              <p className="mt-4 text-sm text-slate-600">Loading...</p>
             </div>
           </div>
         }>
@@ -376,22 +361,21 @@ function DocsLanguageSelector() {
   const handleLanguageChange = (langCode: string) => {
     setIsLangOpen(false);
     const newUrl = `/docs?doc=${currentDoc}&lang=${langCode}`;
-    console.log('Changing language to:', langCode, 'URL:', newUrl);
     router.push(newUrl);
     router.refresh();
   };
 
   return (
-    <div className="relative lang-selector">
+    <div className="lang-selector relative">
       <button
         onClick={() => setIsLangOpen(!isLangOpen)}
-        className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all"
+        className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-all hover:bg-slate-100"
         aria-label="Select language"
       >
         <FlagIcon code={currentLanguage.flag} />
         <span className="hidden lg:inline">{currentLanguage.name}</span>
         <svg
-          className={`w-4 h-4 text-gray-500 transition-transform ${isLangOpen ? 'rotate-180' : ''}`}
+          className={`h-4 w-4 text-slate-500 transition-transform ${isLangOpen ? 'rotate-180' : ''}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -399,23 +383,23 @@ function DocsLanguageSelector() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </button>
-      
+
       {isLangOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg border border-gray-200 overflow-hidden z-20">
+        <div className="absolute right-0 z-20 mt-2 w-48 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-card">
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => handleLanguageChange(lang.code)}
-              className={`w-full flex items-center gap-3 px-4 py-3 text-sm font-medium transition ${
-                currentLang === lang.code 
-                  ? 'bg-gray-900 text-white' 
-                  : 'text-gray-700 hover:bg-gray-50'
+              className={`flex w-full items-center gap-3 px-4 py-3 text-sm font-medium transition ${
+                currentLang === lang.code
+                  ? 'bg-brand-600 text-white'
+                  : 'text-slate-700 hover:bg-slate-50'
               }`}
             >
               <FlagIcon code={lang.flag} />
               <span className="flex-1 text-left">{lang.name}</span>
               {currentLang === lang.code && (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
               )}
@@ -431,7 +415,7 @@ function DocsPageContentWrapper() {
   const searchParams = useSearchParams();
   const currentLang = searchParams.get('lang') || 'en';
   const currentDoc = searchParams.get('doc') || 'getting-started';
-  
+
   return <DocsPageContent key={`${currentDoc}-${currentLang}`} />;
 }
 
@@ -441,22 +425,22 @@ function DocsPageContent() {
   const currentDoc = searchParams.get('doc') || 'getting-started';
 
   return (
-    <div className="grid lg:grid-cols-4 gap-8">
+    <div className="grid gap-8 lg:grid-cols-4">
       {/* Sidebar */}
       <div className="lg:col-span-1">
-        <div className="bg-white rounded-lg border border-gray-200 p-6 sticky top-24">
+        <div className="sticky top-24 rounded-2xl bg-white p-6 shadow-soft ring-1 ring-slate-200/70">
           {/* Docs Navigation */}
           <div className="mb-6">
-            <h2 className="text-sm font-bold text-gray-900 mb-3">Documentation</h2>
+            <h2 className="mb-3 text-sm font-bold text-slate-900">Documentation</h2>
             <nav className="space-y-1">
               {docsList.map((doc) => (
                 <Link
                   key={doc.id}
                   href={`/docs?doc=${doc.id}&lang=${currentLang}`}
-                  className={`block text-sm px-3 py-2 rounded-lg transition ${
+                  className={`block rounded-lg px-3 py-2 text-sm transition ${
                     currentDoc === doc.id
-                      ? 'bg-gray-900 text-white font-medium'
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                      ? 'bg-brand-600 font-medium text-white shadow-soft'
+                      : 'text-slate-600 hover:bg-brand-50 hover:text-brand-700'
                   }`}
                 >
                   {doc.title}
@@ -466,7 +450,7 @@ function DocsPageContent() {
           </div>
 
           {/* Table of Contents */}
-          <div className="border-t border-gray-200 pt-6">
+          <div className="border-t border-slate-200 pt-6">
             <DocsTOC currentLang={currentLang} currentDoc={currentDoc} />
           </div>
         </div>

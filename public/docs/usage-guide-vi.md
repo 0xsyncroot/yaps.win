@@ -1,41 +1,96 @@
 # Hướng dẫn sử dụng
 
-## Trả lời hàng loạt
+Hướng dẫn này bao quát mọi chế độ trong bảng điều khiển Reply Guys, kèm đúng nhãn bạn sẽ thấy trong giao diện. Mở bảng điều khiển trên [x.com](https://x.com) hoặc [farcaster.xyz](https://farcaster.xyz), đăng nhập, rồi nhấn một ô trên trang chủ.
 
-1. Tab **Nhiệm vụ**
-2. Dán đường dẫn (mỗi đường dẫn một dòng)
-3. Nhấp chuột "Thêm nhiệm vụ"
-4. Nhấp chuột "Bắt đầu xử lý"
+> **Khả dụng:** phần lớn chế độ chỉ có trên X hoặc dùng chung. Farcaster có bộ riêng — xem ghi chú nền tảng ở mỗi mục.
 
-**Ví dụ đường dẫn:**
-```
-https://x.com/user1/status/123456789
-https://twitter.com/user2/status/987654321
-```
+## Post List
 
-## Tự động trả lời bảng tin
+**Reply cho một danh sách URL bài đăng bạn đã có sẵn.** (Trang chủ → **Automate → Post List**. Trên Farcaster ô này là **Reply From Cast List**.)
 
-1. Tab **Bảng tin**
-2. Chọn KOL muốn trả lời
-3. Cấu hình cài đặt (độ trễ, bộ lọc)
-4. Nhấp chuột "Bắt đầu tự động trả lời"
-5. Tiện ích sẽ tự động trả lời bài đăng của KOL trong bảng tin
+1. Mở **Post List**. Có hai tab: **Activity Log** và **Settings**.
+2. Trong **Post Links**, dán các URL bài đăng X/Twitter — mỗi URL một dòng. Trùng lặp được tự động loại bỏ.
+3. Trong tab **Settings**, đặt hồ sơ phong cách viết, chỉ dẫn riêng (custom prompt), và **độ trễ** giữa các reply. Các tùy chọn bật/tắt gồm **dừng khi lỗi** (stop on error) và **tự động thử lại bài lỗi** (auto-retry failed).
+4. Nhấp **Start**. Reply Guys mở/dùng một tab X và reply lần lượt từng bài (kèm auto-like).
+5. Theo dõi tiến trình và bảng **Activity Log** (Post Link, Like, Reply, Generated Reply, Status). Thống kê hiển thị **Replied / Skipped / Errors**.
+6. Dùng bộ lọc trạng thái (All / Success / Failed / Skipped), **Retry failed**, **Export**, hoặc **Clear History** khi cần. **Stop** dừng lượt chạy.
 
-## Theo dõi KOL
+**Nền tảng:** X và Farcaster (Farcaster bổ sung auto-recast bên cạnh auto-like).
 
-1. Tab **KOL**
-2. Thêm KOL (tên người dùng hoặc đường dẫn)
-3. Nhấp chuột "Bắt đầu theo dõi" cho từng KOL
-4. Tiện ích sẽ theo dõi và tự động trả lời bài đăng mới
+## List Reply
 
-## Cá nhân hóa
+**Tự động reply các bài đăng bên trong các List trên X.** (Trang chủ → **Automate → List Reply**.)
 
-1. Tab **Tài khoản**
-2. Nhấp chuột "Chạy lại quá trình thiết lập"
-3. Chọn bài đăng để phân tích
-4. Tiện ích sẽ tạo hồ sơ phong cách viết
-5. Phản hồi sẽ giống phong cách viết của bạn
+1. Mở **List Reply** (tab: **Activity Log**, **Settings**).
+2. Trong **List URLs**, dán một hoặc nhiều URL List của X — mỗi URL một dòng (ví dụ `https://x.com/i/lists/1916897389660537163`).
+3. Trong **Settings → Filter Settings**, có thể bật **Infofi Filters** (Ethos, Wallchain, Kaito Yap, Moni) và chọn **AND** (mọi bộ lọc đã bật đều phải đạt) hoặc **OR** (chỉ cần một bộ lọc đạt).
+4. Trong **Behavior Settings**, tinh chỉnh **Skip replied**, **Skip reply posts**, **Max Posts to Scan/List**, **Max Replies/List**, **Read Time (s)**, và **Reply Delay (s)**.
+5. Nhấp **Start**. Nó quét từng List timeline và reply các bài khớp bộ lọc của bạn. Thống kê hiển thị **Scanned / Replied / Skipped / Errors**.
+
+**Nền tảng:** Chỉ X.
+
+## Newfeed
+
+**Reply các bài từ bảng tin của bạn hoặc từ tìm kiếm — tự động.** (Trang chủ → **Automate → Newfeed**.)
+
+1. Mở **Newfeed** (tab: **Activity Log**, **Settings**).
+2. Trong **Settings → Mode Selection**, chọn:
+   - **Timeline Mode** — reply các bài trong bảng tin (home feed) của bạn.
+   - **Search Mode** — reply các bài khớp một truy vấn tìm kiếm.
+3. **Bộ lọc Timeline:** **Keywords** (phân tách bằng dấu phẩy) và tùy chọn **KOL Filter** (chỉ reply bài từ các KOL đã chọn).
+4. **Bộ lọc Search** (Search Mode): xây dựng **Search Query**, tùy chọn **From User**, **Min Replies / Likes / Retweets**, khoảng ngày **Since/Until**, và **Exclude replies** (loại reply).
+5. **Infofi Filters** (cả hai chế độ): bật bất kỳ trong **Ethos**, **Wallchain**, **Kaito Yaps**, **Moni**, mỗi cái có ngưỡng điểm tối thiểu, và chọn **AND** hoặc **OR**.
+6. **Behavior Settings:** **Auto-like posts**, **Skip replied**, **Max Posts to Scan**, **Max Posts to Reply**, **Read Time (s)**, **Reply Delay (s)**.
+7. Nhấp **Start**. Theo dõi **Scanned / Replied / Skipped / Errors** và Activity Log. **Save** lưu cấu hình của bạn.
+
+**Nền tảng:** X. Farcaster có **Farcaster Newfeed** riêng — ý tưởng giống nhau, nhưng bộ lọc InfoFi là **Ethos**, **Neymar**, và **Farcaster Pro** (không có Wallchain / Kaito / Moni trên Farcaster), và không có chế độ Search.
+
+## Reply Repliers
+
+**Reply lại những người đã reply vào bài đăng của chính bạn.** (Trang chủ → **Automate → Reply Repliers**.)
+
+1. Mở **Reply Repliers**.
+2. Trong **Post management → Post URLs**, dán các URL bài đăng X của chính bạn (mỗi URL một dòng). Dùng **Validate** để kiểm tra.
+3. Có thể bật **InfoFi filters** (Ethos, Wallchain, Kaito Yap) với điều kiện **AND / OR**, và đặt **Delay** giữa các reply.
+4. Nhấp **Start**. Reply Guys quét các reply trong từng bài của bạn và reply lại những người đó. Thống kê hiển thị **Total / Scanned / Replied / Errors**, kèm nhật ký từng bài có thể mở rộng.
+
+**Nền tảng:** Chỉ X.
+
+## KOL Monitor
+
+**Theo dõi các KOL cụ thể và tự động reply bài đăng mới của họ ngay khi xuất hiện.** (Trang chủ → **Monitor → KOL Monitor**.)
+
+1. Mở **KOL Monitor**. Danh sách KOL của bạn được tải (có tìm kiếm và lọc theo nhãn ở trên cùng).
+2. Tích chọn các KOL bạn muốn theo dõi. Có **Select All** / **Clear All**.
+3. Nhấp **Start Monitoring (N KOLs)**. Reply Guys canh chừng các tài khoản đó và reply bài mới của họ theo thời gian thực; giao diện chuyển sang màn hình theo dõi kèm nhật ký hoạt động trực tiếp.
+4. Dừng theo dõi ngay trong màn hình đó khi xong.
+
+> Hãy thêm hoặc tuyển chọn các tài khoản có thể theo dõi trong **Manage KOLs** trước.
+
+**Nền tảng:** X và Farcaster (Farcaster theo dõi các cast mới).
+
+## Manage KOLs
+
+**Xây dựng và duy trì danh sách tài khoản được theo dõi.** (Trang chủ → **Monitor → Manage KOLs**.)
+
+1. Mở **Manage KOLs**. Danh sách **My KOLs** hỗ trợ tìm kiếm, lọc theo nhãn, và phân trang.
+2. Dùng tab **Add KOLs** để dán username hoặc URL profile (mỗi cái một dòng) và nhập vào.
+3. Với mỗi KOL bạn có thể **phân tích phong cách viết**, xem kết quả phân tích, hoặc xóa. **Delete All** xóa toàn bộ danh sách.
+4. Trên X, tab **Leaders** giúp bạn khám phá tài khoản từ các nguồn như Wallchain và thêm vào danh sách.
+5. Mỗi dòng KOL có nút **Monitor** để nhảy thẳng vào KOL Monitor cho tài khoản đó.
+
+**Nền tảng:** X và Farcaster.
+
+## Dashboard
+
+**Xem hiệu quả các reply của bạn.** (Trang chủ → **Monitor → Dashboard**.)
+
+Dashboard hiển thị **Reply Statistics** (Total / Success / Pending / Failed và tỷ lệ thành công), **AI Provider Usage** (OpenAI / Grok / DeepSeek), **Recent Activity** (7 và 30 ngày gần nhất), và danh sách **Recent Replies**. Dùng **Refresh** để tải lại.
+
+**Nền tảng:** X và Farcaster.
 
 ---
 
-**Trước:** [Cài đặt](./installation-vi.md) | **Tiếp theo:** [Cài đặt](./settings-vi.md)
+Để biết tùy chọn AI, giải thích các bộ lọc điểm InfoFi, và quản lý tài khoản/hạn mức, xem **[Cài đặt](/docs?doc=settings&lang=vi)**.
+
+**Trước:** [Bắt đầu](/docs?doc=getting-started&lang=vi) | **Tiếp theo:** [Cài đặt](/docs?doc=settings&lang=vi)

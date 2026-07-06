@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Sora } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-inter",
+});
+
+const sora = Sora({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["600", "700", "800"],
+  variable: "--font-sora",
 });
 
 export const metadata: Metadata = {
@@ -15,14 +23,14 @@ export const metadata: Metadata = {
     template: "%s | Reply Guys"
   },
   
-  description: "Automate your X engagement with AI. Chrome extension for Auto Reply and Auto Post. Powered by OpenAI, Grok, and DeepSeek. Simple setup, customizable settings.",
-  
+  description: "Automate your replies on X and Farcaster with AI. Chrome extension with five reply modes, InfoFi score filters, and multi-provider AI (OpenAI, Grok, DeepSeek).",
+
   keywords: [
     "X automation",
-    "Twitter automation", 
+    "Twitter automation",
     "AI reply",
     "auto reply Twitter",
-    "auto post X",
+    "Farcaster automation",
     "Twitter bot",
     "X engagement tool",
     "AI content generation",
@@ -61,7 +69,7 @@ export const metadata: Metadata = {
     url: 'https://yaps.win',
     siteName: 'Reply Guys',
     title: 'Reply Guys - AI-Powered X Automation',
-    description: 'Automate your X engagement with AI. Auto Reply and Auto Post with simple setup.',
+    description: 'Automate your replies on X and Farcaster with AI. Multiple reply modes, InfoFi filters, and multi-provider AI.',
     images: [
       {
         url: '/logo.png',
@@ -84,7 +92,7 @@ export const metadata: Metadata = {
     site: '@yapswin',
     creator: '@yapswin',
     title: 'Reply Guys - AI-Powered X Automation',
-    description: 'Automate your X engagement with AI. Auto Reply and Auto Post with simple setup.',
+    description: 'Automate your replies on X and Farcaster with AI. Multiple reply modes, InfoFi filters, and multi-provider AI.',
     images: ['/logo.png'],
   },
   
@@ -134,9 +142,9 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-title': 'Reply Guys',
     'format-detection': 'telephone=no',
     'mobile-web-app-capable': 'yes',
-    'msapplication-TileColor': '#2563eb',
+    'msapplication-TileColor': '#4338ca',
     'msapplication-tap-highlight': 'no',
-    'theme-color': '#ffffff',
+    'theme-color': '#4338ca',
   },
 };
 
@@ -149,7 +157,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#4338ca" />
         
         {/* Schema.org structured data for Google */}
         <script
@@ -178,17 +186,17 @@ export default function RootLayout({
                 name: 'Reply Guys',
                 url: 'https://yaps.win',
               },
-              description: 'AI-powered automation platform for X (Twitter). Auto Reply, Auto Post, and content generation powered by OpenAI, Grok, and DeepSeek.',
+              description: 'AI-powered reply automation for X (Twitter) and Farcaster. Multiple reply modes, InfoFi score filters, and multi-provider AI (OpenAI, Grok, DeepSeek).',
               downloadUrl: 'https://chromewebstore.google.com/detail/reply-guys/agcghmpffaaokcgmnikdgocfakgnalbd',
               screenshot: '/logo.png',
-              softwareVersion: '2.0.0',
+              softwareVersion: '2.2.0',
               featureList: [
-                'Auto Reply with AI',
-                'Auto Post scheduling',
-                'Multi-AI provider support',
-                'Quota management',
-                'Batch processing',
-                'Real-time analytics',
+                'AI reply automation for X and Farcaster',
+                'Five reply modes (Post List, List Reply, Newfeed, Reply Repliers, KOL Monitor)',
+                'InfoFi score filters (Ethos, Wallchain, Kaito Yaps, Moni)',
+                'Multi-AI provider support (OpenAI, Grok, DeepSeek)',
+                'Quota tracking and analytics',
+                'Writing-style personalization',
               ],
             }),
           }}
@@ -206,7 +214,7 @@ export default function RootLayout({
               logo: 'https://yaps.win/logo.png',
               sameAs: [
                 'https://twitter.com/yapswin',
-                'https://t.me/yapsbot',
+                'https://t.me/reply_guys_bot',
                 'https://github.com/yapswin',
               ],
               contactPoint: {
@@ -236,7 +244,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${sora.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>

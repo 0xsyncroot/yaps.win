@@ -1,129 +1,87 @@
-# Yaps Extension
+# Getting Started
 
-Chrome Extension for AI-powered automation on X (Twitter).
+Reply Guys is a Chrome extension that uses AI to help you reply on **X (Twitter)** and **Farcaster**. It adds a side panel with several automation and monitoring modes, InfoFi score filters, and multi-provider AI (OpenAI, Grok, DeepSeek). This guide walks you through your first run.
 
-## Features
+> New here? Install first with the [Installation Guide](/docs?doc=installation&lang=en).
 
-### Core Features
-- **Batch Reply** - Add multiple URLs and automatically reply sequentially
-- **KOL Auto-Reply** - Automatically reply to KOL posts in newsfeed
-- **KOL Monitoring** - Monitor and auto-reply to specific KOL posts
-- **Writing Style Personalization** - Analyze writing style to create replies similar to yours
-- **Multi AI Provider** - OpenAI, Grok, DeepSeek
-- **Smart Checking** - Automatically check if posts are commentable
-- **Quota Management** - Real-time quota tracking
+## 1. Open the Side Panel
 
-### Advanced Features
-- **Account Management** - Manage multiple X accounts
-- **Dashboard** - Statistics on replies, success rate
-- **Error Monitoring** - Track and retry errors
-- **Settings** - Configure delay, retries, notifications
-- **KOL Management** - Add, remove, filter KOLs
+1. Open **[x.com](https://x.com)** or **[farcaster.xyz](https://farcaster.xyz)** in your browser
+2. Click the **Reply Guys icon** in your toolbar, or the slim **Reply Guys tab** on the right edge of the page
+3. The side panel opens — the X panel on X, the Farcaster panel on Farcaster
 
-## Quick Start
+## 2. Sign In
 
-### Step 1: Install Extension
-1. Download extension from Chrome Web Store
-2. Or install from source code (see [Installation Guide](./installation-en.md))
-3. Extension will appear in Chrome toolbar
+On first open you'll see the **"Sign in to Reply Guys"** screen. Choose:
 
-### Step 2: Open Extension on X.com
-1. Open Chrome browser and go to **X.com** (or Twitter.com)
-2. Click on Yaps extension icon in toolbar
-3. Extension will open in side panel
+- **Continue with Telegram** — opens `@reply_guys_bot`; press **Start** and you're logged in
+- **Continue with Discord** — opens Discord authorization; approve and you're logged in
 
-> **Note**: Extension only works when you're on X.com or Twitter.com
+If you don't have quota yet, open **[@reply_guys_bot](https://t.me/reply_guys_bot)**, choose **Buy License**, and pick a plan (a free **Trial** is available). See [Pricing](#pricing) below.
 
-### Step 3: Login
-1. In extension, click "**Login with Telegram**" button
-2. A new Telegram tab will automatically open bot `@reply_guys_bot`
-3. Two scenarios:
+## 3. Read the Home Hub
 
-#### If you don't have an account yet:
-- Bot displays: "⚠️ You don't have an account yet"
-- Click "**💳 Buy License**" button
-- Select suitable plan:
-  - **Trial**: FREE - 399 replies, 1 account (trial)
-  - **Starter**: $10 - 10,000 replies, 5 accounts (personal)
-  - **Pro**: $18 - 20,000 replies, 10 accounts (professional)
-  - **Max**: $84 - 100,000 replies, 20 accounts (teams)
-- Complete payment as instructed
-- Account will be created automatically after successful payment
-- Close Telegram tab and return to extension
-- Click "Login with Telegram" again to complete
+Once you're signed in, the panel shows the **home hub**:
 
-#### If you already have an account:
-- Bot displays: "✅ Login Successful!"
-- Return to extension, login completes automatically
-- Start using immediately
+- **Stat card (top).** Your **Quota left** (replies available) and your **Success rate**, with a colored meter for Success / Pending / Failed replies.
+- **Monitor** group: **Dashboard**, **Manage KOLs**, **KOL Monitor**.
+- **Automate** group: the reply modes (see below).
+- **Configuration** group: **Settings** and **Account**.
 
-### Step 4: Use Features
+Tap any tile to open that view; the back arrow (top-left) returns you to the hub.
 
-#### Batch Reply
-1. Open **Tasks** tab in extension
-2. Paste X post URLs (one URL per line)
-3. Click "Add Tasks"
-4. Click "Start Processing"
-5. Extension will automatically reply to each post
+## 4. Pick a Mode
 
-#### Newsfeed Auto-Reply
-1. Open **Newsfeed** tab
-2. Select KOLs you want to auto-reply to
-3. Configure settings (delay, filters)
-4. Click "Start Auto-Reply"
-5. Extension will automatically reply to KOL posts in your newsfeed
+Reply Guys offers several ways to generate replies. Pick the one that matches what you want to do.
 
-#### KOL Monitoring
-1. Open **KOLs** tab
-2. Add KOLs (username or profile URL)
-3. Click "Start Monitoring"
-4. Extension will monitor and auto-reply to new posts
+### Which automation mode should I use?
 
-#### Personalize Writing Style
-1. Open **Account** tab
-2. Click "Rerun Onboarding"
-3. Select your posts to analyze
-4. Extension will learn your writing style
-5. Future replies will match your writing style
+| Mode | What it does | Best for | Platform |
+|------|--------------|----------|----------|
+| **Post List** | Paste a list of post URLs; it replies to each one | Replying to a specific set of posts you already have | X (Farcaster: **Reply From Cast List**) |
+| **List Reply** | Auto-replies to posts in one of your X **Lists** | Working a curated List timeline | X only |
+| **Newfeed** | Replies to posts in your **home feed** or **search results**, with filters | Hands-off engagement across your timeline | X + Farcaster |
+| **Reply Repliers** | Paste **your own** post URLs; it replies to the people who **replied to you** | Engaging everyone who commented on your posts | X only |
+| **KOL Monitor** | Watches selected KOLs and auto-replies to their **new** posts as they appear | Being first to reply to specific accounts | X + Farcaster |
 
-## Pricing Plans
+**Rules of thumb:**
 
-| Plan | Price | Replies | Accounts | Best For |
+- Have a batch of links already? → **Post List** (X) / **Reply From Cast List** (Farcaster)
+- Want to work your own timeline or a search query with quality filters? → **Newfeed**
+- Want to reply back to people who engaged with you? → **Reply Repliers**
+- Want to be early on a handful of key accounts? → **KOL Monitor**
+
+Each mode has its own settings (delay between replies, auto-like, filters, and more). See the [Usage Guide](/docs?doc=usage-guide&lang=en) for step-by-step instructions on every mode, and [Settings](/docs?doc=settings&lang=en) for the AI options and the InfoFi score filters.
+
+## 5. Personalize Your Replies (recommended)
+
+Open **Settings** → **Personalization** → **Re-analyze Writing Style**. Reply Guys studies your X posts so AI replies sound like you. You can also set a **Custom Prompt**, reply **language**, and **min/max length** in Settings.
+
+## Pricing
+
+Plans are purchased inside **[@reply_guys_bot](https://t.me/reply_guys_bot)**. Typical tiers:
+
+| Plan | Price | Replies | Accounts | Best for |
 |------|-------|---------|----------|----------|
-| **Trial** | FREE | 399 | 1 | Testing features |
-| **Starter** | $10 | 10,000 | 5 | Personal users |
-| **Pro** | $18 | 20,000 | 10 | Professionals |
+| **Trial** | Free | 399 | 1 | Testing the features |
+| **Starter** | $10 | 10,000 | 5 | Personal use |
+| **Pro** | $18 | 20,000 | 10 | Power users |
 | **Max** | $84 | 100,000 | 20 | Teams & businesses |
 
-*See detailed pricing in Telegram bot when purchasing license*
-
-## Settings
-
-- **AI Provider**: OpenAI / Grok / DeepSeek
-- **Delay**: 1-60 seconds between replies
-- **Max Retries**: 1-5 times on failure
-- **Auto-check**: Automatically check if post is commentable
-- **Notifications**: Notify on completion or errors
+*The bot always shows current plans and pricing at checkout.*
 
 ## Troubleshooting
 
-**Extension won't open**: Make sure you're on X.com or Twitter.com
-
-**Can't see extension icon**: Check extension is installed and enabled in Chrome
-
-**Cannot login**: Ensure Telegram is installed, try logging in again
-
-**No account yet**: Purchase license in Telegram bot (`@reply_guys_bot`), account will be created automatically
-
-**Tasks not processing**: Check if logged in, have quota, on X.com tab
-
-**Reply not posting**: Check if post is commentable, URL is valid
+- **Panel won't open** → make sure you're on x.com, twitter.com, or farcaster.xyz, then refresh.
+- **Can't sign in** → finish **Start** in `@reply_guys_bot` (or approve Discord); if it times out, click the button again.
+- **"Quota exceeded"** → top up in `@reply_guys_bot`; check your balance on **Account**.
+- **A reply didn't post** → the post may not be repliable, or you were out of quota; check the mode's activity log.
 
 ## Support
 
-- Telegram Bot: `@reply_guys_bot` - Send message for support
-- Open ticket: `@reply_guys_bot`
+- **Telegram bot:** [@reply_guys_bot](https://t.me/reply_guys_bot)
+- **Support:** [@yapssupport](https://t.me/yapssupport)
 
 ---
 
-**Made with ❤️ for the Yaps community**
+**Next:** [Usage Guide](/docs?doc=usage-guide&lang=en) | [Back to Home](/)

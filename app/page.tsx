@@ -1,109 +1,171 @@
-'use client';
-
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import SiteHeader from './components/SiteHeader';
+import SiteFooter from './components/SiteFooter';
+import Sparkle from './components/Sparkle';
+
+const CHROME_STORE_URL =
+  'https://chromewebstore.google.com/detail/reply-guys/agcghmpffaaokcgmnikdgocfakgnalbd';
+
+const features = [
+  {
+    title: 'Multi-Mode Automation',
+    description: 'Five ways to engage — Post List, List Reply, Newfeed, Reply Repliers, and KOL Monitor',
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.8}
+        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+      />
+    ),
+  },
+  {
+    title: 'X + Farcaster',
+    description: 'A side panel that automates replies on both x.com and farcaster.xyz',
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.8}
+        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+      />
+    ),
+  },
+  {
+    title: 'Multi-AI Support',
+    description: 'Works with OpenAI, Grok, and DeepSeek — choose your preferred provider',
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.8}
+        d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 7h10v10H7V7z"
+      />
+    ),
+  },
+  {
+    title: 'InfoFi Score Filters',
+    description: 'Target quality authors by Ethos, Wallchain, Kaito Yaps, and Moni scores',
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.8}
+        d="M4 6h16M4 10h16M4 14h10M4 18h10"
+      />
+    ),
+  },
+  {
+    title: 'Quota Tracking',
+    description: 'Monitor your reply quota and success rate in real time',
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.8}
+        d="M9 19v-6m4 6V5m4 14v-9M4 21h16"
+      />
+    ),
+  },
+  {
+    title: 'Your Writing Style',
+    description: 'Personalized replies from your own writing style, custom prompts, tone, and length',
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.8}
+        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+      />
+    ),
+  },
+];
+
+const steps = [
+  {
+    title: 'Install Extension',
+    description: 'Add Reply Guys from the Chrome Web Store, then open x.com or farcaster.xyz',
+  },
+  {
+    title: 'Connect Your Account',
+    description: 'Sign in with Telegram or Discord, and grab a plan from @reply_guys_bot',
+  },
+  {
+    title: 'Start Automating',
+    description: 'Open the side panel, pick a mode, and let AI handle your replies',
+  },
+];
+
+const trustPoints = ['Free to start', '3-minute setup', 'Chrome only'];
 
 export default function LandingPage() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200' : 'bg-white'
-      }`}>
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center gap-2">
-              <img 
-                src="/logo.png" 
-                alt="Reply Guys" 
-                className="w-8 h-8 rounded-lg"
-              />
-              <span className="text-lg font-semibold text-gray-900">Reply Guys</span>
-            </Link>
-            
-            <div className="flex items-center gap-6">
-              <Link href="/docs" className="text-sm text-gray-600 hover:text-gray-900">
-                Docs
-              </Link>
-              <a href="https://t.me/yapsbot" className="text-sm text-gray-600 hover:text-gray-900">
-                Support
-              </a>
-              <a
-                href="https://chromewebstore.google.com/detail/reply-guys/agcghmpffaaokcgmnikdgocfakgnalbd"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-black text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition"
-              >
-                Install
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteHeader />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Automate Your X Engagement with AI
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 bg-hero-glow" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 bg-dot-grid" aria-hidden="true" />
+        <Sparkle className="pointer-events-none absolute -right-10 top-24 hidden h-72 w-72 text-brand-100 motion-safe:animate-float sm:block" />
+
+        <div className="relative mx-auto max-w-3xl px-6 pb-20 pt-24 text-center sm:pt-28">
+          <span className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white/70 px-4 py-1.5 text-sm font-medium text-brand-700 shadow-soft backdrop-blur">
+            <span className="h-2 w-2 rounded-full bg-accent-400" />
+            AI reply automation for X &amp; Farcaster
+          </span>
+
+          <h1 className="mt-6 font-display text-5xl font-extrabold leading-[1.05] tracking-tight text-slate-900 text-balance md:text-6xl">
+            Automate Your X Engagement <span className="brand-text-gradient">with AI</span>
           </h1>
-          
-          <p className="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed">
-            Chrome extension that helps you reply and post on X automatically using AI. Simple, fast, effective.
+
+          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-slate-600 text-pretty md:text-xl">
+            Chrome extension that helps you reply on X and Farcaster automatically using AI. Simple,
+            fast, effective.
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+
+          <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
             <a
-              href="https://chromewebstore.google.com/detail/reply-guys/agcghmpffaaokcgmnikdgocfakgnalbd"
+              href={CHROME_STORE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 bg-black text-white font-medium rounded-lg hover:bg-gray-800 transition"
+              className="inline-flex items-center justify-center rounded-full bg-brand-600 px-7 py-3.5 text-base font-semibold text-white shadow-glow transition-colors hover:bg-brand-700"
             >
               Install Extension
             </a>
             <Link
               href="/docs"
-              className="px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:border-gray-400 transition"
+              className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-3.5 text-base font-semibold text-slate-700 transition-colors hover:border-brand-300 hover:text-brand-700"
             >
               Documentation
             </Link>
           </div>
-          
-          <div className="flex items-center justify-center gap-8 text-sm text-gray-500">
-            <span>✓ Free to start</span>
-            <span>✓ 3-minute setup</span>
-            <span>✓ Chrome only</span>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-slate-500">
+            {trustPoints.map((point) => (
+              <span key={point} className="inline-flex items-center gap-2">
+                <Sparkle className="h-3.5 w-3.5 text-brand-500" />
+                {point}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Video Demo */}
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+      <section className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
               See How It Works
             </h2>
-            <p className="text-gray-600">
-              Watch the extension in action
-            </p>
+            <p className="mt-3 text-lg text-slate-600">Watch the extension in action</p>
           </div>
-          
-          <div className="relative w-full rounded-lg overflow-hidden shadow-lg border border-gray-200 bg-gray-100">
-            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+
+          <div className="mt-10 overflow-hidden rounded-2xl bg-white p-2 shadow-card ring-1 ring-slate-200/70">
+            <div className="relative w-full overflow-hidden rounded-xl bg-slate-100" style={{ paddingBottom: '56.25%' }}>
               <iframe
-                className="absolute top-0 left-0 w-full h-full"
+                className="absolute left-0 top-0 h-full w-full"
                 src="https://www.youtube.com/embed/PL_9YJxDuW0"
                 title="Reply Guys Demo"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -116,172 +178,90 @@ export default function LandingPage() {
       </section>
 
       {/* Features */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+      <section className="py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
               Features
             </h2>
-            <p className="text-gray-600">
+            <p className="mt-3 text-lg text-slate-600">
               Everything you need to automate X engagement
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: 'Auto Reply',
-                description: 'Generate AI responses to posts automatically with customizable settings',
-              },
-              {
-                title: 'Auto Post',
-                description: 'Schedule and publish posts automatically with AI-generated content',
-              },
-              {
-                title: 'Multi AI Support',
-                description: 'Works with OpenAI, Grok, and DeepSeek - choose your preferred provider',
-              },
-              {
-                title: 'Queue Management',
-                description: 'Smart queue system with retry logic and rate limiting',
-              },
-              {
-                title: 'Usage Tracking',
-                description: 'Monitor your API usage and quota in real-time',
-              },
-              {
-                title: 'Customizable Settings',
-                description: 'Configure delays, tone, length, and more to fit your needs',
-              },
-            ].map((feature, index) => (
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature) => (
               <div
-                key={index}
-                className="p-6 border border-gray-200 rounded-lg hover:border-gray-300 transition"
+                key={feature.title}
+                className="group rounded-2xl bg-white p-6 shadow-soft ring-1 ring-slate-200/70 transition-all hover:-translate-y-1 hover:shadow-card hover:ring-brand-200"
               >
-                <h3 className="text-lg font-semibold mb-2 text-gray-900">{feature.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600 ring-1 ring-brand-100 transition-colors group-hover:bg-brand-600 group-hover:text-white">
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    {feature.icon}
+                  </svg>
+                </div>
+                <h3 className="mt-5 text-lg font-semibold text-slate-900">{feature.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+      {/* Getting Started */}
+      <section className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
               Getting Started
             </h2>
-            <p className="text-gray-600">
-              Start automating in 3 simple steps
-            </p>
+            <p className="mt-3 text-lg text-slate-600">Start automating in 3 simple steps</p>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { 
-                step: '1', 
-                title: 'Install Extension', 
-                description: 'Add Reply Guys from Chrome Web Store with one click' 
-              },
-              { 
-                step: '2', 
-                title: 'Get License', 
-                description: 'Contact @yapsbot on Telegram to receive your license key' 
-              },
-              { 
-                step: '3', 
-                title: 'Start Automating', 
-                description: 'Configure your settings and let AI handle your X engagement' 
-              },
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="w-12 h-12 bg-black text-white rounded-lg flex items-center justify-center text-xl font-bold mb-4 mx-auto">
-                  {item.step}
+
+          <ol className="mt-12 grid gap-8 md:grid-cols-3">
+            {steps.map((item, index) => (
+              <li
+                key={item.title}
+                className="relative rounded-2xl bg-white p-7 text-center shadow-soft ring-1 ring-slate-200/70"
+              >
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-600 text-lg font-bold text-white shadow-soft">
+                  {index + 1}
                 </div>
-                <h3 className="text-lg font-semibold mb-2 text-gray-900">{item.title}</h3>
-                <p className="text-gray-600 text-sm">{item.description}</p>
-              </div>
+                <h3 className="mt-5 text-lg font-semibold text-slate-900">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Ready to Automate?
-          </h2>
-          <p className="text-gray-600 mb-8">
-            Start automating your X engagement with AI today
-          </p>
-          <a
-            href="https://chromewebstore.google.com/detail/reply-guys/agcghmpffaaokcgmnikdgocfakgnalbd"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-6 py-3 bg-black text-white font-medium rounded-lg hover:bg-gray-800 transition"
-          >
-            Install Extension
-          </a>
+      <section className="py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-600 to-brand-800 px-6 py-16 text-center shadow-lift sm:px-12">
+            <Sparkle className="pointer-events-none absolute -left-8 -top-8 h-40 w-40 text-white/10" />
+            <Sparkle className="pointer-events-none absolute -bottom-10 right-4 h-32 w-32 text-white/10" />
+            <div className="relative mx-auto max-w-2xl">
+              <h2 className="font-display text-3xl font-bold tracking-tight text-white md:text-4xl">
+                Ready to Automate?
+              </h2>
+              <p className="mt-4 text-lg text-brand-100">
+                Start automating your X engagement with AI today
+              </p>
+              <a
+                href={CHROME_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex items-center justify-center rounded-full bg-accent-400 px-8 py-3.5 text-base font-semibold text-slate-900 shadow-soft transition-transform hover:scale-[1.03] hover:bg-accent-300"
+              >
+                Install Extension
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <img 
-                  src="/logo.png" 
-                  alt="Reply Guys" 
-                  className="w-8 h-8 rounded-lg"
-                />
-                <span className="font-semibold">Reply Guys</span>
-              </div>
-              <p className="text-gray-400 text-sm">
-                AI-powered automation for X
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-3">Product</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><Link href="/docs" className="hover:text-white">Documentation</Link></li>
-                <li><Link href="/docs?doc=getting-started" className="hover:text-white">Getting Started</Link></li>
-                <li><a href="https://chromewebstore.google.com/detail/reply-guys/agcghmpffaaokcgmnikdgocfakgnalbd" className="hover:text-white">Chrome Store</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-3">Support</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="https://t.me/yapsbot" className="hover:text-white">Telegram Bot</a></li>
-                <li><a href="https://t.me/yapssupport" className="hover:text-white">Help Center</a></li>
-                <li><Link href="/privacy" className="hover:text-white">Privacy Policy</Link></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="pt-6 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-            <p>&copy; 2024 Reply Guys. All rights reserved.</p>
-            <div className="flex gap-4">
-              <a href="https://twitter.com/yapswin" className="hover:text-white transition">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
-                </svg>
-              </a>
-              <a href="https://t.me/yapsbot" className="hover:text-white transition">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

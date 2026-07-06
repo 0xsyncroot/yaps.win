@@ -1,129 +1,87 @@
-# Tiện ích Yaps
+# Bắt đầu
 
-Tiện ích Chrome tự động trả lời các bài đăng trên X (Twitter) bằng AI.
+Reply Guys là tiện ích Chrome dùng AI để giúp bạn reply trên **X (Twitter)** và **Farcaster**. Nó bổ sung một bảng điều khiển (side panel) với nhiều chế độ tự động hóa và theo dõi, các bộ lọc điểm InfoFi, và AI đa nhà cung cấp (OpenAI, Grok, DeepSeek). Hướng dẫn này sẽ dẫn bạn qua lần chạy đầu tiên.
 
-## Tính năng
+> Lần đầu dùng? Hãy cài đặt trước với [Hướng dẫn cài đặt](/docs?doc=installation&lang=vi).
 
-### Tính năng chính
-- **Trả lời hàng loạt** - Thêm nhiều đường dẫn và tự động trả lời tuần tự
-- **Tự động trả lời KOL** - Tự động trả lời bài đăng của KOL trong bảng tin
-- **Theo dõi KOL** - Theo dõi và tự động trả lời bài đăng của KOL cụ thể
-- **Cá nhân hóa phong cách viết** - Phân tích phong cách viết để tạo phản hồi giống bạn
-- **Nhiều nhà cung cấp AI** - OpenAI, Grok, DeepSeek
-- **Kiểm tra thông minh** - Tự động kiểm tra bài đăng có thể bình luận không
-- **Quản lý hạn mức** - Theo dõi hạn mức theo thời gian thực
+## 1. Mở bảng điều khiển (Side Panel)
 
-### Tính năng nâng cao
-- **Quản lý tài khoản** - Quản lý nhiều tài khoản X
-- **Bảng điều khiển** - Thống kê phản hồi, tỷ lệ thành công
-- **Theo dõi lỗi** - Theo dõi và thử lại lỗi
-- **Cài đặt** - Cấu hình độ trễ, số lần thử lại, thông báo
-- **Quản lý KOL** - Thêm, xóa, lọc KOL
+1. Mở **[x.com](https://x.com)** hoặc **[farcaster.xyz](https://farcaster.xyz)** trong trình duyệt
+2. Nhấp **biểu tượng Reply Guys** trên thanh công cụ, hoặc **tab Reply Guys** mỏng ở cạnh phải của trang
+3. Bảng điều khiển mở ra — bảng X trên X, bảng Farcaster trên Farcaster
 
-## Bắt đầu nhanh
+## 2. Đăng nhập
 
-### Bước 1: Cài đặt tiện ích
-1. Tải tiện ích từ Chrome Web Store
-2. Hoặc cài đặt từ mã nguồn (xem [Hướng dẫn cài đặt](./installation-vi.md))
-3. Tiện ích sẽ xuất hiện trên thanh công cụ Chrome
+Ở lần mở đầu tiên, bạn sẽ thấy màn hình **"Sign in to Reply Guys"**. Hãy chọn:
 
-### Bước 2: Mở tiện ích trên X.com
-1. Mở trình duyệt Chrome và vào **X.com** (hoặc Twitter.com)
-2. Nhấp vào biểu tượng tiện ích Yaps trên thanh công cụ
-3. Tiện ích sẽ mở ở thanh bên (side panel)
+- **Continue with Telegram** — mở `@reply_guys_bot`; nhấn **Start** là bạn đã đăng nhập
+- **Continue with Discord** — mở trang cấp quyền Discord; chấp thuận là bạn đã đăng nhập
 
-> **Lưu ý**: Tiện ích chỉ hoạt động khi bạn đang ở trang X.com hoặc Twitter.com
+Nếu bạn chưa có hạn mức, hãy mở **[@reply_guys_bot](https://t.me/reply_guys_bot)**, chọn **Buy License**, và chọn một gói (có gói **Trial** miễn phí). Xem mục **Bảng giá** bên dưới.
 
-### Bước 3: Đăng nhập
-1. Trong tiện ích, nhấp nút "**Đăng nhập bằng Telegram**"
-2. Một tab Telegram mới sẽ tự động mở bot `@reply_guys_bot`
-3. Hai trường hợp xảy ra:
+## 3. Tìm hiểu Trang chủ (Home Hub)
 
-#### Nếu bạn chưa có tài khoản:
-- Bot hiển thị thông báo: "⚠️ You don't have an account yet"
-- Nhấp nút "**💳 Buy License**"
-- Chọn gói phù hợp:
-  - **Trial**: MIỄN PHÍ - 399 phản hồi, 1 tài khoản (dùng thử)
-  - **Starter**: $10 - 10,000 phản hồi, 5 tài khoản (cá nhân)
-  - **Pro**: $18 - 20,000 phản hồi, 10 tài khoản (chuyên nghiệp)
-  - **Max**: $84 - 100,000 phản hồi, 20 tài khoản (đội nhóm)
-- Thanh toán theo hướng dẫn
-- Tài khoản tự động được tạo sau khi thanh toán thành công
-- Đóng tab Telegram và quay lại tiện ích
-- Nhấp "Đăng nhập bằng Telegram" lần nữa để hoàn tất
+Sau khi đăng nhập, bảng điều khiển hiển thị **trang chủ**:
 
-#### Nếu bạn đã có tài khoản:
-- Bot hiển thị: "✅ Login Successful!"
-- Quay lại tiện ích, đăng nhập tự động hoàn tất
-- Bắt đầu sử dụng ngay
+- **Thẻ thống kê (trên cùng).** **Quota left** (số reply còn lại) và **Success rate** (tỷ lệ thành công), kèm thanh màu cho reply Thành công / Đang chờ / Thất bại.
+- Nhóm **Monitor**: **Dashboard**, **Manage KOLs**, **KOL Monitor**.
+- Nhóm **Automate**: các chế độ reply (xem bên dưới).
+- Nhóm **Configuration**: **Settings** và **Account**.
 
-### Bước 4: Sử dụng các tính năng
+Nhấn vào một ô để mở chế độ đó; mũi tên quay lại (góc trên bên trái) đưa bạn về trang chủ.
 
-#### Trả lời hàng loạt (Batch Reply)
-1. Mở tab **Nhiệm vụ** trong tiện ích
-2. Dán các đường dẫn bài đăng X (mỗi đường dẫn một dòng)
-3. Nhấp "Thêm nhiệm vụ"
-4. Nhấp "Bắt đầu xử lý"
-5. Tiện ích sẽ tự động trả lời từng bài đăng
+## 4. Chọn một chế độ
 
-#### Tự động trả lời bảng tin (Newsfeed Auto-Reply)
-1. Mở tab **Bảng tin**
-2. Chọn các KOL bạn muốn tự động trả lời
-3. Cấu hình cài đặt (độ trễ, bộ lọc)
-4. Nhấp "Bắt đầu tự động trả lời"
-5. Tiện ích sẽ tự động trả lời bài đăng của KOL trong bảng tin của bạn
+Reply Guys có nhiều cách để tạo reply. Hãy chọn cách phù hợp với việc bạn muốn làm.
 
-#### Theo dõi KOL (KOL Monitoring)
-1. Mở tab **KOL**
-2. Thêm KOL (tên người dùng hoặc đường dẫn profile)
-3. Nhấp "Bắt đầu theo dõi"
-4. Tiện ích sẽ theo dõi và tự động trả lời bài đăng mới
+### Nên dùng chế độ tự động nào?
 
-#### Cá nhân hóa phong cách viết
-1. Mở tab **Tài khoản**
-2. Nhấp "Chạy lại quá trình thiết lập"
-3. Chọn các bài đăng của bạn để phân tích
-4. Tiện ích sẽ học phong cách viết của bạn
-5. Các phản hồi sau sẽ giống phong cách viết của bạn
+| Chế độ | Chức năng | Phù hợp khi | Nền tảng |
+|--------|-----------|-------------|----------|
+| **Post List** | Dán một danh sách URL bài đăng; nó reply từng bài | Reply cho một tập bài đăng bạn đã có sẵn | X (Farcaster: **Reply From Cast List**) |
+| **List Reply** | Tự động reply các bài trong một **List** trên X của bạn | Làm việc với một List timeline được tuyển chọn | Chỉ X |
+| **Newfeed** | Reply các bài trong **bảng tin** hoặc **kết quả tìm kiếm**, kèm bộ lọc | Tương tác tự động trên toàn timeline | X + Farcaster |
+| **Reply Repliers** | Dán các URL bài đăng **của chính bạn**; nó reply lại những người đã **reply bạn** | Tương tác với mọi người đã bình luận vào bài của bạn | Chỉ X |
+| **KOL Monitor** | Theo dõi các KOL đã chọn và tự động reply bài đăng **mới** của họ ngay khi xuất hiện | Trở thành người reply sớm cho một số tài khoản cụ thể | X + Farcaster |
 
-## Gói sử dụng
+**Nguyên tắc chung:**
 
-| Gói | Giá | Số phản hồi | Số tài khoản | Phù hợp với |
-|-----|-----|-------------|--------------|-------------|
-| **Trial** | MIỄN PHÍ | 399 | 1 | Dùng thử tính năng |
-| **Starter** | $10 | 10,000 | 5 | Người dùng cá nhân |
-| **Pro** | $18 | 20,000 | 10 | Người dùng chuyên nghiệp |
-| **Max** | $84 | 100,0000 | 20 | Đội nhóm & doanh nghiệp |
+- Đã có sẵn một loạt liên kết? → **Post List** (X) / **Reply From Cast List** (Farcaster)
+- Muốn khai thác timeline của bạn hoặc một truy vấn tìm kiếm kèm bộ lọc chất lượng? → **Newfeed**
+- Muốn reply lại những người đã tương tác với bạn? → **Reply Repliers**
+- Muốn reply sớm cho một vài tài khoản quan trọng? → **KOL Monitor**
 
-*Xem giá chi tiết trong bot Telegram khi mua license*
+Mỗi chế độ có cài đặt riêng (độ trễ giữa các reply, auto-like, bộ lọc, và hơn thế). Xem [Hướng dẫn sử dụng](/docs?doc=usage-guide&lang=vi) để có hướng dẫn từng bước cho mọi chế độ, và [Cài đặt](/docs?doc=settings&lang=vi) để biết các tùy chọn AI và bộ lọc điểm InfoFi.
 
-## Cài đặt
+## 5. Cá nhân hóa reply của bạn (khuyến nghị)
 
-- **Nhà cung cấp AI**: OpenAI / Grok / DeepSeek
-- **Độ trễ**: 1-60 giây giữa các phản hồi
-- **Số lần thử lại tối đa**: 1-5 lần khi thất bại
-- **Tự động kiểm tra**: Tự động kiểm tra bài đăng có thể bình luận
-- **Thông báo**: Thông báo khi hoàn thành hoặc lỗi
+Mở **Settings** → **Personalization** → **Re-analyze Writing Style**. Reply Guys phân tích các bài đăng X của bạn để AI viết reply nghe giống bạn. Bạn cũng có thể đặt **Custom Prompt** (chỉ dẫn riêng), **ngôn ngữ** reply, và **độ dài tối thiểu/tối đa** trong Settings.
+
+## Bảng giá
+
+Các gói được mua ngay trong **[@reply_guys_bot](https://t.me/reply_guys_bot)**. Các mức thường gặp:
+
+| Gói | Giá | Số reply | Số tài khoản | Phù hợp với |
+|-----|-----|----------|--------------|-------------|
+| **Trial** | Miễn phí | 399 | 1 | Dùng thử tính năng |
+| **Starter** | $10 | 10,000 | 5 | Dùng cá nhân |
+| **Pro** | $18 | 20,000 | 10 | Người dùng nâng cao |
+| **Max** | $84 | 100,000 | 20 | Đội nhóm & doanh nghiệp |
+
+*Bot luôn hiển thị các gói và giá hiện hành khi thanh toán.*
 
 ## Khắc phục sự cố
 
-**Tiện ích không mở**: Đảm bảo bạn đang ở trang X.com hoặc Twitter.com
-
-**Không thấy nút tiện ích**: Kiểm tra tiện ích đã được cài đặt và bật trong Chrome
-
-**Không đăng nhập được**: Đảm bảo Telegram đã cài đặt, thử đăng nhập lại
-
-**Chưa có tài khoản**: Mua license trong bot Telegram (`@reply_guys_bot`), tài khoản sẽ được tạo tự động
-
-**Nhiệm vụ không xử lý**: Kiểm tra đã đăng nhập, còn hạn mức, đang ở tab X.com
-
-**Phản hồi không đăng**: Kiểm tra bài đăng có thể bình luận, đường dẫn hợp lệ
+- **Bảng điều khiển không mở** → đảm bảo bạn đang ở x.com, twitter.com, hoặc farcaster.xyz, rồi làm mới trang.
+- **Không đăng nhập được** → hoàn thành bước **Start** trong `@reply_guys_bot` (hoặc chấp thuận Discord); nếu hết giờ, nhấp lại nút.
+- **"Quota exceeded"** → nạp thêm trong `@reply_guys_bot`; kiểm tra số dư trong **Account**.
+- **Một reply không được đăng** → bài đăng có thể không cho reply, hoặc bạn đã hết hạn mức; kiểm tra nhật ký hoạt động của chế độ đó.
 
 ## Hỗ trợ
 
-- Bot Telegram: `@reply_guys_bot` - Gửi tin nhắn để được hỗ trợ
-- Open ticket: `@reply_guys_bot`
+- **Bot Telegram:** [@reply_guys_bot](https://t.me/reply_guys_bot)
+- **Hỗ trợ:** [@yapssupport](https://t.me/yapssupport)
 
 ---
 
-**Được tạo bằng ❤️ cho cộng đồng Yaps**
+**Tiếp theo:** [Hướng dẫn sử dụng](/docs?doc=usage-guide&lang=vi) | [Về trang chủ](/)
