@@ -1,19 +1,19 @@
 # Installation Guide
 
-Get Reply Guys up and running in about 2 minutes.
+Let's get Reply Guys up and running — it takes about 2 minutes. 🚀
 
 ## Step 1: Install the Chrome Extension
 
-Reply Guys is a Chrome / Edge extension that adds a side panel to X (Twitter) and Farcaster.
+Reply Guys is a Chrome / Edge extension that adds a side panel to **X (Twitter)**, **Farcaster**, and **Binance Square**.
 
 👉 **[Install Reply Guys from the Chrome Web Store](https://chromewebstore.google.com/detail/reply-guys/agcghmpffaaokcgmnikdgocfakgnalbd)**
 
 1. Open the link above (or search "Reply Guys" in the Chrome Web Store)
 2. Click **"Add to Chrome"**
 3. Confirm with **"Add extension"** in the popup
-4. The Reply Guys icon appears in your browser toolbar
+4. The Reply Guys icon appears in your browser toolbar 🎉
 
-> **Tip:** Click the puzzle-piece icon in Chrome and pin **Reply Guys** so its icon is always visible.
+> **Tip:** Click the puzzle-piece icon in Chrome and pin **Reply Guys** so its icon stays visible.
 
 ### Loading an unpacked build (developers)
 
@@ -27,26 +27,26 @@ If you were handed a build instead of the store version:
 
 Reply Guys only runs on supported sites, so open one first:
 
-- **X:** [x.com](https://x.com) (or twitter.com)
-- **Farcaster:** [farcaster.xyz](https://farcaster.xyz)
+- **X** — [x.com](https://x.com) (or twitter.com)
+- **Farcaster** — [farcaster.xyz](https://farcaster.xyz)
+- **Binance Square** — [binance.com/square](https://www.binance.com/square)
 
-Then open the panel in either of two ways:
+Then open the panel by **clicking the Reply Guys tab** — the small sparkle logo pinned to the **right edge of the page**:
 
-- Click the **Reply Guys icon** in your browser toolbar, **or**
-- Click the slim **Reply Guys tab** pinned to the right edge of the page
+![The Reply Guys tab sits on the right edge of the page — click it to open the side panel](/docs/images/side-panel-launcher.svg)
 
-The **side panel** opens on the right. It automatically shows the correct panel for the site you're on — the X panel on X, the Farcaster panel on Farcaster.
+The **side panel** slides open on the right and automatically shows the correct panel for the site you're on — the X panel on X, the Farcaster panel on Farcaster, and the Binance Square panel on Binance Square. (The tab takes on each site's color, so it's dark on X and brand-purple elsewhere — but it's always the same sparkle mark.)
 
-> If you click the toolbar icon on any other website, Reply Guys reminds you to open X or Farcaster first.
+> **Prefer the toolbar?** Clicking the **Reply Guys icon** in your browser toolbar works too. If you click it on any other website, Reply Guys will gently remind you to open X, Farcaster, or Binance Square first.
 
 ## Step 3: Sign In
 
 The panel opens on a **"Sign in to Reply Guys"** screen with two options:
 
 - **Continue with Telegram** — opens the `@reply_guys_bot` Telegram bot. Press **Start**, and the extension logs you in automatically once the bot confirms.
-- **Continue with Discord** — opens Discord's authorization page. Approve access, and the extension logs you in automatically.
+- **Continue with Discord** — opens Discord's authorization page. Approve access, and you're logged in automatically.
 
-You can leave the panel open while you finish signing in on the other tab — it completes on its own. (A pending login expires after about 30 minutes; if it times out, just click the button again.)
+Feel free to leave the panel open while you finish signing in on the other tab — it completes on its own. (A pending login expires after about 30 minutes; if it times out, just click the button again.)
 
 ## Step 4: Get Your Quota
 
@@ -65,7 +65,7 @@ Back in the extension, your remaining quota is shown on the panel's stat card an
 
 - ✅ Google Chrome 114+ or Microsoft Edge 114+ (for side-panel support)
 - ✅ A Telegram **or** Discord account (for sign-in)
-- ✅ An X (Twitter) and/or Farcaster account
+- ✅ An X (Twitter), Farcaster, and/or Binance Square account
 - ✅ A stable internet connection
 
 ---
@@ -73,8 +73,8 @@ Back in the extension, your remaining quota is shown on the panel's stat card an
 ## Troubleshooting
 
 ### The panel won't open
-- Make sure you're on **x.com**, **twitter.com**, or **farcaster.xyz**
-- Refresh the page, then click the toolbar icon or the edge tab again
+- Make sure you're on **x.com**, **twitter.com**, **farcaster.xyz**, or **binance.com/square**
+- Refresh the page, then click the edge tab (or the toolbar icon) again
 - Confirm the extension is enabled in `chrome://extensions/`
 
 ### Login won't complete

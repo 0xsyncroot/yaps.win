@@ -8,8 +8,9 @@ const CHROME_STORE_URL =
 
 const features = [
   {
-    title: 'Multi-Mode Automation',
-    description: 'Five ways to engage — Post List, List Reply, Newfeed, Reply Repliers, and KOL Monitor',
+    title: 'Five Ways to Engage',
+    description:
+      'Post List, List Reply, Newfeed, Reply Repliers, and KOL Monitor — pick whichever flow fits the way you work today.',
     icon: (
       <path
         strokeLinecap="round"
@@ -20,8 +21,9 @@ const features = [
     ),
   },
   {
-    title: 'X + Farcaster',
-    description: 'A side panel that automates replies on both x.com and farcaster.xyz',
+    title: 'X, Farcaster & Binance Square',
+    description:
+      'One side panel that replies for you across all three — no tab-hopping, no copy-paste, no missed moments.',
     icon: (
       <path
         strokeLinecap="round"
@@ -32,8 +34,8 @@ const features = [
     ),
   },
   {
-    title: 'Multi-AI Support',
-    description: 'Works with OpenAI, Grok, and DeepSeek — choose your preferred provider',
+    title: 'Your Choice of AI',
+    description: 'OpenAI, Grok, or DeepSeek — bring the model you already trust and let it do the writing.',
     icon: (
       <path
         strokeLinecap="round"
@@ -44,8 +46,8 @@ const features = [
     ),
   },
   {
-    title: 'InfoFi Score Filters',
-    description: 'Target quality authors by Ethos, Wallchain, Kaito Yaps, and Moni scores',
+    title: 'Reply to the Right People',
+    description: 'Focus on quality authors with InfoFi score filters — Ethos, Wallchain, Kaito Yaps, and Moni.',
     icon: (
       <path
         strokeLinecap="round"
@@ -56,8 +58,8 @@ const features = [
     ),
   },
   {
-    title: 'Quota Tracking',
-    description: 'Monitor your reply quota and success rate in real time',
+    title: 'Always Know Where You Stand',
+    description: 'Watch your reply quota and success rate update in real time — no guessing, no surprises.',
     icon: (
       <path
         strokeLinecap="round"
@@ -68,8 +70,8 @@ const features = [
     ),
   },
   {
-    title: 'Your Writing Style',
-    description: 'Personalized replies from your own writing style, custom prompts, tone, and length',
+    title: 'Sounds Just Like You',
+    description: 'Replies shaped by your own voice, tone, and length — with custom prompts whenever you want them.',
     icon: (
       <path
         strokeLinecap="round"
@@ -83,20 +85,20 @@ const features = [
 
 const steps = [
   {
-    title: 'Install Extension',
-    description: 'Add Reply Guys from the Chrome Web Store, then open x.com or farcaster.xyz',
+    title: 'Add It to Chrome',
+    description: 'Grab Reply Guys from the Chrome Web Store, then open X, Farcaster, or Binance Square.',
   },
   {
-    title: 'Connect Your Account',
-    description: 'Sign in with Telegram or Discord, and grab a plan from @reply_guys_bot',
+    title: 'Sign In & Pick a Plan',
+    description: 'Log in with Telegram or Discord, then grab a plan from @reply_guys_bot — free to start.',
   },
   {
-    title: 'Start Automating',
-    description: 'Open the side panel, pick a mode, and let AI handle your replies',
+    title: 'Let AI Take Over',
+    description: 'Open the side panel, choose a mode, and watch your replies go out while you get on with your day.',
   },
 ];
 
-const trustPoints = ['Free to start', '3-minute setup', 'Chrome only'];
+const trustPoints = ['Free to start', 'Ready in 3 minutes', 'Works right in Chrome'];
 
 export default function LandingPage() {
   return (
@@ -112,16 +114,16 @@ export default function LandingPage() {
         <div className="relative mx-auto max-w-3xl px-6 pb-20 pt-24 text-center sm:pt-28">
           <span className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white/70 px-4 py-1.5 text-sm font-medium text-brand-700 shadow-soft backdrop-blur">
             <span className="h-2 w-2 rounded-full bg-accent-400" />
-            AI reply automation for X &amp; Farcaster
+            AI reply automation for X, Farcaster &amp; Binance Square
           </span>
 
           <h1 className="mt-6 font-display text-5xl font-extrabold leading-[1.05] tracking-tight text-slate-900 text-balance md:text-6xl">
-            Automate Your X Engagement <span className="brand-text-gradient">with AI</span>
+            Stay in the Conversation <span className="brand-text-gradient">with AI</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-slate-600 text-pretty md:text-xl">
-            Chrome extension that helps you reply on X and Farcaster automatically using AI. Simple,
-            fast, effective.
+            Reply Guys is a Chrome extension that replies for you on X, Farcaster, and Binance Square
+            — in your own voice. Set it up once, and let AI keep you showing up everywhere.
           </p>
 
           <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
@@ -159,7 +161,7 @@ export default function LandingPage() {
             <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
               See How It Works
             </h2>
-            <p className="mt-3 text-lg text-slate-600">Watch the extension in action</p>
+            <p className="mt-3 text-lg text-slate-600">A quick look at Reply Guys doing the work for you</p>
           </div>
 
           <div className="mt-10 overflow-hidden rounded-2xl bg-white p-2 shadow-card ring-1 ring-slate-200/70">
@@ -185,7 +187,7 @@ export default function LandingPage() {
               Features
             </h2>
             <p className="mt-3 text-lg text-slate-600">
-              Everything you need to automate X engagement
+              Everything you need to stay active — without the daily grind
             </p>
           </div>
 
@@ -215,7 +217,7 @@ export default function LandingPage() {
             <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
               Getting Started
             </h2>
-            <p className="mt-3 text-lg text-slate-600">Start automating in 3 simple steps</p>
+            <p className="mt-3 text-lg text-slate-600">You&apos;ll be up and running in 3 simple steps</p>
           </div>
 
           <ol className="mt-12 grid gap-8 md:grid-cols-3">
@@ -243,10 +245,10 @@ export default function LandingPage() {
             <Sparkle className="pointer-events-none absolute -bottom-10 right-4 h-32 w-32 text-white/10" />
             <div className="relative mx-auto max-w-2xl">
               <h2 className="font-display text-3xl font-bold tracking-tight text-white md:text-4xl">
-                Ready to Automate?
+                Ready When You Are
               </h2>
               <p className="mt-4 text-lg text-brand-100">
-                Start automating your X engagement with AI today
+                Bring Reply Guys along on X, Farcaster, and Binance Square — free to start, ready in minutes.
               </p>
               <a
                 href={CHROME_STORE_URL}

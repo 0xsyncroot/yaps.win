@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Reply Guys"
   },
   
-  description: "Automate your replies on X and Farcaster with AI. Chrome extension with five reply modes, InfoFi score filters, and multi-provider AI (OpenAI, Grok, DeepSeek).",
+  description: "Automate your replies on X, Farcaster, and Binance Square with AI. Chrome extension with five reply modes, InfoFi score filters, and multi-provider AI (OpenAI, Grok, DeepSeek).",
 
   keywords: [
     "X automation",
@@ -31,8 +31,11 @@ export const metadata: Metadata = {
     "AI reply",
     "auto reply Twitter",
     "Farcaster automation",
+    "Binance Square automation",
+    "Binance Square",
     "Twitter bot",
     "X engagement tool",
+    "crypto engagement tool",
     "AI content generation",
     "social media automation",
     "OpenAI Twitter",
@@ -69,7 +72,7 @@ export const metadata: Metadata = {
     url: 'https://yaps.win',
     siteName: 'Reply Guys',
     title: 'Reply Guys - AI-Powered X Automation',
-    description: 'Automate your replies on X and Farcaster with AI. Multiple reply modes, InfoFi filters, and multi-provider AI.',
+    description: 'Automate your replies on X, Farcaster, and Binance Square with AI. Multiple reply modes, InfoFi filters, and multi-provider AI.',
     images: [
       {
         url: '/logo.png',
@@ -92,7 +95,7 @@ export const metadata: Metadata = {
     site: '@yapswin',
     creator: '@yapswin',
     title: 'Reply Guys - AI-Powered X Automation',
-    description: 'Automate your replies on X and Farcaster with AI. Multiple reply modes, InfoFi filters, and multi-provider AI.',
+    description: 'Automate your replies on X, Farcaster, and Binance Square with AI. Multiple reply modes, InfoFi filters, and multi-provider AI.',
     images: ['/logo.png'],
   },
   
@@ -186,12 +189,12 @@ export default function RootLayout({
                 name: 'Reply Guys',
                 url: 'https://yaps.win',
               },
-              description: 'AI-powered reply automation for X (Twitter) and Farcaster. Multiple reply modes, InfoFi score filters, and multi-provider AI (OpenAI, Grok, DeepSeek).',
+              description: 'AI-powered reply automation for X (Twitter), Farcaster, and Binance Square. Multiple reply modes, InfoFi score filters, and multi-provider AI (OpenAI, Grok, DeepSeek).',
               downloadUrl: 'https://chromewebstore.google.com/detail/reply-guys/agcghmpffaaokcgmnikdgocfakgnalbd',
               screenshot: '/logo.png',
               softwareVersion: '2.2.0',
               featureList: [
-                'AI reply automation for X and Farcaster',
+                'AI reply automation for X, Farcaster, and Binance Square',
                 'Five reply modes (Post List, List Reply, Newfeed, Reply Repliers, KOL Monitor)',
                 'InfoFi score filters (Ethos, Wallchain, Kaito Yaps, Moni)',
                 'Multi-AI provider support (OpenAI, Grok, DeepSeek)',

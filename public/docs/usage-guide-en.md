@@ -1,8 +1,8 @@
 # Usage Guide
 
-This guide covers every mode in the Reply Guys side panel, with the exact labels you'll see in the UI. Open the panel on [x.com](https://x.com) or [farcaster.xyz](https://farcaster.xyz), sign in, then tap a tile on the home hub.
+This guide covers every mode in the Reply Guys side panel, using the exact labels you'll see in the UI. Open the panel on [x.com](https://x.com), [farcaster.xyz](https://farcaster.xyz), or [binance.com/square](https://www.binance.com/square), sign in, then tap a tile on the home hub.
 
-> **Availability:** most modes are X-only or shared. Farcaster has its own set — see each section's platform note.
+> **Availability:** most X modes are X-only or shared with Farcaster. Farcaster and Binance Square each have their own set — check the platform note at the end of each section, and see the dedicated [Binance Square](#binance-square) section below.
 
 ## Post List
 
@@ -88,6 +88,30 @@ This guide covers every mode in the Reply Guys side panel, with the exact labels
 The Dashboard shows **Reply Statistics** (Total / Success / Pending / Failed and your success rate), **AI Provider Usage** (OpenAI / Grok / DeepSeek), **Recent Activity** (last 7 and 30 days), and a **Recent Replies** list. Use **Refresh** to reload.
 
 **Platform:** X and Farcaster.
+
+## Binance Square
+
+Binance Square has its **own panel** with a familiar layout. The first time you open it, you'll be asked to read and accept a short risk notice before the hub appears.
+
+> ⚠️ **Read before you start.** Automating on Binance Square may get your Square **posting/commenting suspended or permanently frozen**, and a Square violation can affect your **KYC-verified account, its linked accounts, and their funds**. You'll tick a box to acknowledge this once — please use Square automation thoughtfully and at your own discretion.
+
+Once you're in, the **Reply** group offers four ways to engage:
+
+1. **Feed** — scan the live Binance Square feed and reply to fresh posts.
+2. **Link** — paste Binance Square post links (one per line, e.g. `https://www.binance.com/square/post/123…`) and reply to each.
+3. **Search** — reply to posts Square surfaces for a topic you enter.
+4. **Profile** — reply to a single creator's latest Square posts.
+
+Pick a mode (the hub cards preselect it, and a switcher lets you change it), then press **Start on Binance Square** — open a Square tab first if you haven't. Progress and drafts appear right in the view.
+
+Two more tools sit alongside Reply:
+
+- **KOL monitor** — add Square creators by handle, select who to track, and reply to their new posts as they land. There's an **Auto-like posts** toggle here too.
+- **Daily tasks** — run Square's Rewards-Hub daily tasks (check-in, read posts, share, follow) to farm points.
+
+> Binance Square uses your global AI settings (provider, language, writing style, custom prompt). It doesn't use the InfoFi score filters — those are X and Farcaster only.
+
+**Platform:** Binance Square only.
 
 ---
 

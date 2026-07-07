@@ -14,7 +14,8 @@ export default function SiteFooter() {
               <span className="text-base font-semibold text-white">Reply Guys</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-slate-400">
-              AI-powered engagement for X. Reply and post smarter, right from your browser.
+              AI-powered engagement for X, Farcaster, and Binance Square. Reply and post smarter,
+              right from your browser.
             </p>
           </div>
 

@@ -26,16 +26,53 @@ const FlagIcon = ({ code }: { code: string }) => (
   </span>
 );
 
+// ── Language persistence + content cache ─────────────────────────────────────
+// Remember the reader's language across visits, and cache fetched markdown so
+// switching language (or revisiting a doc) is instant — no spinner, no reload.
+const LANG_STORAGE_KEY = 'rg-docs-lang';
+
+function getStoredLang(): string | null {
+  try {
+    return typeof window !== 'undefined' ? window.localStorage.getItem(LANG_STORAGE_KEY) : null;
+  } catch {
+    return null;
+  }
+}
+
+function storeLang(lang: string) {
+  try {
+    window.localStorage.setItem(LANG_STORAGE_KEY, lang);
+  } catch {
+    /* storage disabled (private mode) — language still works for this session */
+  }
+}
+
+const docCache = new Map<string, string>();
+
+async function fetchDoc(doc: string, lang: string): Promise<string> {
+  const key = `${doc}-${lang}`;
+  const cached = docCache.get(key);
+  if (cached !== undefined) return cached;
+
+  const res = await fetch(`/docs/${doc}-${lang}.md`);
+  if (!res.ok) throw new Error(`Document not found: ${res.status}`);
+  const text = await res.text();
+  docCache.set(key, text);
+  return text;
+}
+
+// Warm the cache for a doc/lang in the background; failures are harmless.
+function prefetchDoc(doc: string, lang: string) {
+  fetchDoc(doc, lang).catch(() => {});
+}
+
 function DocsTOC({ currentLang, currentDoc }: { currentLang: string; currentDoc: string }) {
   const [headings, setHeadings] = useState<Array<{ id: string; text: string; level: number }>>([]);
 
   useEffect(() => {
     async function loadTOC() {
       try {
-        const response = await fetch(`/docs/${currentDoc}-${currentLang}.md`);
-        if (!response.ok) return;
-
-        const text = await response.text();
+        const text = await fetchDoc(currentDoc, currentLang);
         const headingRegex = /^(#{1,4})\s+(.+)$/gm;
         const extractedHeadings: Array<{ id: string; text: string; level: number }> = [];
         let match;
@@ -60,7 +97,7 @@ function DocsTOC({ currentLang, currentDoc }: { currentLang: string; currentDoc:
 
   return (
     <div>
-      <h2 className="mb-4 text-sm font-bold text-slate-900">Table of Contents</h2>
+      <h2 className="mb-4 text-sm font-bold text-slate-900">{uiText(currentLang).toc}</h2>
       <nav className="space-y-1">
         {headings.map((heading) => (
           <a
@@ -89,36 +126,52 @@ function DocsTOC({ currentLang, currentDoc }: { currentLang: string; currentDoc:
 }
 
 function DocsContent({ doc, lang }: { doc: string; lang: string }) {
-  const [content, setContent] = useState('');
-  const [loading, setLoading] = useState(true);
+  const cacheKey = `${doc}-${lang}`;
+  // Seed straight from the cache when we already have this doc — no spinner, no flash.
+  const [content, setContent] = useState<string>(() => docCache.get(cacheKey) ?? '');
+  const [pending, setPending] = useState<boolean>(() => !docCache.has(cacheKey));
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function loadDoc() {
-      setLoading(true);
+    const key = `${doc}-${lang}`;
+    const otherLang = lang === 'en' ? 'vi' : 'en';
+    const cached = docCache.get(key);
+
+    if (cached !== undefined) {
+      // Already cached → swap in instantly, then warm the other language so the
+      // language toggle is instant too.
+      setContent(cached);
+      setPending(false);
       setError(null);
-      try {
-        const url = `/docs/${doc}-${lang}.md`;
-        const response = await fetch(url, { cache: 'no-store' });
-
-        if (!response.ok) {
-          throw new Error(`Document not found: ${response.status}`);
-        }
-
-        const text = await response.text();
-        setContent(text);
-      } catch (err) {
-        setError('Failed to load documentation');
-        console.error('Failed to load doc:', doc, lang, err);
-      } finally {
-        setLoading(false);
-      }
+      prefetchDoc(doc, otherLang);
+      return;
     }
 
-    loadDoc();
+    let cancelled = false;
+    setPending(true);
+    setError(null);
+
+    fetchDoc(doc, lang)
+      .then((text) => {
+        if (cancelled) return;
+        setContent(text);
+        setPending(false);
+        prefetchDoc(doc, otherLang);
+      })
+      .catch((err) => {
+        if (cancelled) return;
+        setError('Failed to load documentation');
+        setPending(false);
+        console.error('Failed to load doc:', doc, lang, err);
+      });
+
+    return () => {
+      cancelled = true;
+    };
   }, [doc, lang]);
 
-  if (loading) {
+  // Full spinner only on the very first load, when there's nothing to show yet.
+  if (pending && !content) {
     return (
       <div className="flex h-64 items-center justify-center">
         <div className="text-center">
@@ -129,7 +182,7 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
     );
   }
 
-  if (error) {
+  if (error && !content) {
     return (
       <div className="flex h-64 items-center justify-center">
         <div className="text-center">
@@ -140,7 +193,10 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
   }
 
   return (
-    <div className="prose prose-base max-w-none rounded-2xl bg-white p-8 shadow-soft ring-1 ring-slate-200/70 md:p-10">
+    <div className="prose prose-base relative max-w-none overflow-hidden rounded-2xl bg-white p-8 shadow-soft ring-1 ring-slate-200/70 md:p-10">
+      {/* Keep the current text on screen while the next language/doc loads —
+          just a thin brand bar up top instead of a jarring spinner swap. */}
+      {pending && <span className="absolute inset-x-0 top-0 block h-0.5 animate-pulse bg-brand-600" />}
       <ReactMarkdown
         key={`${doc}-${lang}-${content.substring(0, 50)}`}
         remarkPlugins={[remarkGfm]}
@@ -258,6 +314,14 @@ function DocsContent({ doc, lang }: { doc: string; lang: string }) {
               {children}
             </em>
           ),
+          img: ({ src, alt }) => (
+            <img
+              src={src as string}
+              alt={alt || ''}
+              className="my-6 w-full max-w-2xl rounded-xl border border-slate-200 bg-slate-50 shadow-soft"
+              loading="lazy"
+            />
+          ),
           table: ({ children }) => (
             <div className="my-4 overflow-x-auto rounded-xl border border-slate-200">
               <table className="min-w-full text-sm">
@@ -333,17 +397,24 @@ export default function DocsPage() {
 }
 
 const docsList = [
-  { id: 'getting-started', title: 'Getting Started' },
-  { id: 'installation', title: 'Installation' },
-  { id: 'usage-guide', title: 'Usage Guide' },
-  { id: 'settings', title: 'Settings' },
+  { id: 'getting-started', title: { en: 'Getting Started', vi: 'Bắt đầu' } },
+  { id: 'installation', title: { en: 'Installation', vi: 'Cài đặt' } },
+  { id: 'usage-guide', title: { en: 'Usage Guide', vi: 'Hướng dẫn sử dụng' } },
+  { id: 'settings', title: { en: 'Settings', vi: 'Cài đặt & Bộ lọc' } },
 ];
+
+// Small UI labels that should follow the reader's language.
+const UI_TEXT: Record<string, { docs: string; toc: string }> = {
+  en: { docs: 'Documentation', toc: 'Table of Contents' },
+  vi: { docs: 'Tài liệu', toc: 'Mục lục' },
+};
+const uiText = (lang: string) => UI_TEXT[lang] ?? UI_TEXT.en;
 
 function DocsLanguageSelector() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [isLangOpen, setIsLangOpen] = useState(false);
-  const currentLang = searchParams.get('lang') || 'en';
+  const currentLang = searchParams.get('lang') || getStoredLang() || 'en';
   const currentDoc = searchParams.get('doc') || 'getting-started';
   const currentLanguage = languages.find(l => l.code === currentLang) || languages[0];
 
@@ -360,9 +431,10 @@ function DocsLanguageSelector() {
 
   const handleLanguageChange = (langCode: string) => {
     setIsLangOpen(false);
-    const newUrl = `/docs?doc=${currentDoc}&lang=${langCode}`;
-    router.push(newUrl);
-    router.refresh();
+    storeLang(langCode);
+    // Client-side nav only — no router.refresh(), and the content cache keeps the
+    // switch instant with no full-page spinner.
+    router.push(`/docs?doc=${currentDoc}&lang=${langCode}`, { scroll: false });
   };
 
   return (
@@ -413,17 +485,24 @@ function DocsLanguageSelector() {
 
 function DocsPageContentWrapper() {
   const searchParams = useSearchParams();
-  const currentLang = searchParams.get('lang') || 'en';
+  const router = useRouter();
+  const urlLang = searchParams.get('lang');
   const currentDoc = searchParams.get('doc') || 'getting-started';
+  // URL wins; otherwise fall back to the reader's saved choice; otherwise English.
+  const currentLang = urlLang || getStoredLang() || 'en';
 
-  return <DocsPageContent key={`${currentDoc}-${currentLang}`} />;
+  // Arrived at /docs with no ?lang but a saved preference → reflect it in the URL
+  // (keeps links shareable + the selector in sync) via client-side replace, no reload.
+  useEffect(() => {
+    if (!urlLang && currentLang !== 'en') {
+      router.replace(`/docs?doc=${currentDoc}&lang=${currentLang}`, { scroll: false });
+    }
+  }, [urlLang, currentLang, currentDoc, router]);
+
+  return <DocsPageContent currentDoc={currentDoc} currentLang={currentLang} />;
 }
 
-function DocsPageContent() {
-  const searchParams = useSearchParams();
-  const currentLang = searchParams.get('lang') || 'en';
-  const currentDoc = searchParams.get('doc') || 'getting-started';
-
+function DocsPageContent({ currentDoc, currentLang }: { currentDoc: string; currentLang: string }) {
   return (
     <div className="grid gap-8 lg:grid-cols-4">
       {/* Sidebar */}
@@ -431,7 +510,7 @@ function DocsPageContent() {
         <div className="sticky top-24 rounded-2xl bg-white p-6 shadow-soft ring-1 ring-slate-200/70">
           {/* Docs Navigation */}
           <div className="mb-6">
-            <h2 className="mb-3 text-sm font-bold text-slate-900">Documentation</h2>
+            <h2 className="mb-3 text-sm font-bold text-slate-900">{uiText(currentLang).docs}</h2>
             <nav className="space-y-1">
               {docsList.map((doc) => (
                 <Link
@@ -443,7 +522,7 @@ function DocsPageContent() {
                       : 'text-slate-600 hover:bg-brand-50 hover:text-brand-700'
                   }`}
                 >
-                  {doc.title}
+                  {doc.title[currentLang as 'en' | 'vi'] ?? doc.title.en}
                 </Link>
               ))}
             </nav>
@@ -458,7 +537,7 @@ function DocsPageContent() {
 
       {/* Content */}
       <div className="lg:col-span-3">
-        <DocsContent doc={currentDoc} lang={currentLang} key={`${currentDoc}-${currentLang}`} />
+        <DocsContent doc={currentDoc} lang={currentLang} />
       </div>
     </div>
   );

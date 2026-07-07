@@ -1,6 +1,6 @@
 # Settings & Filters
 
-The **Settings** view (home hub → **Configuration → Settings**) controls how AI writes your replies. Per-run behavior like reply delay and score filters lives inside each automation mode, not here — those are covered in [Filters](#infofi-score-filters) below and in the [Usage Guide](/docs?doc=usage-guide&lang=en).
+The **Settings** view (home hub → **Configuration → Settings**) controls how AI writes your replies — and these choices apply everywhere, on X, Farcaster, and Binance Square. Per-run behavior like reply delay and score filters lives inside each automation mode, not here — those are covered in [Filters](#infofi-score-filters) below and in the [Usage Guide](/docs?doc=usage-guide&lang=en).
 
 ## AI Model & Response
 
@@ -43,6 +43,8 @@ Several automation modes can filter which authors you reply to by their reputati
 - **Farcaster Pro** — only reply to users with the Farcaster Pro badge.
 
 **Which modes use filters:** Newfeed, List Reply, and Reply Repliers on X (Reply Repliers uses Ethos / Wallchain / Kaito Yaps, without Moni); Farcaster Newfeed uses Ethos / Neymar / Farcaster Pro.
+
+> **Binance Square** doesn't use InfoFi score filters — its modes have their own in-panel options instead. Your AI settings above still apply there.
 
 ## Account & Quota
 

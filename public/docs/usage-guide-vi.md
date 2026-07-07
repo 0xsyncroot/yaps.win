@@ -1,8 +1,8 @@
 # Hướng dẫn sử dụng
 
-Hướng dẫn này bao quát mọi chế độ trong bảng điều khiển Reply Guys, kèm đúng nhãn bạn sẽ thấy trong giao diện. Mở bảng điều khiển trên [x.com](https://x.com) hoặc [farcaster.xyz](https://farcaster.xyz), đăng nhập, rồi nhấn một ô trên trang chủ.
+Hướng dẫn này bao quát mọi chế độ trong bảng điều khiển Reply Guys, kèm đúng nhãn bạn sẽ thấy trong giao diện. Mở bảng điều khiển trên [x.com](https://x.com), [farcaster.xyz](https://farcaster.xyz), hoặc [binance.com/square](https://www.binance.com/square), đăng nhập, rồi nhấn một ô trên trang chủ.
 
-> **Khả dụng:** phần lớn chế độ chỉ có trên X hoặc dùng chung. Farcaster có bộ riêng — xem ghi chú nền tảng ở mỗi mục.
+> **Khả dụng:** phần lớn chế độ của X chỉ có trên X hoặc dùng chung với Farcaster. Farcaster và Binance Square mỗi bên có bộ riêng — xem ghi chú nền tảng ở cuối mỗi mục, và xem mục [Binance Square](#binance-square) riêng bên dưới.
 
 ## Post List
 
@@ -88,6 +88,30 @@ Hướng dẫn này bao quát mọi chế độ trong bảng điều khiển Rep
 Dashboard hiển thị **Reply Statistics** (Total / Success / Pending / Failed và tỷ lệ thành công), **AI Provider Usage** (OpenAI / Grok / DeepSeek), **Recent Activity** (7 và 30 ngày gần nhất), và danh sách **Recent Replies**. Dùng **Refresh** để tải lại.
 
 **Nền tảng:** X và Farcaster.
+
+## Binance Square
+
+Binance Square có **bảng điều khiển riêng** với bố cục quen thuộc. Lần đầu mở, bạn sẽ được yêu cầu đọc và chấp nhận một lưu ý rủi ro ngắn trước khi trang chủ hiện ra.
+
+> ⚠️ **Hãy đọc trước khi bắt đầu.** Tự động hóa trên Binance Square có thể khiến việc **đăng bài/bình luận trên Square của bạn bị tạm ngưng hoặc khóa vĩnh viễn**, và một vi phạm trên Square có thể ảnh hưởng tới **tài khoản đã xác minh KYC, các tài khoản liên kết, và số dư của chúng**. Bạn sẽ tích một ô để xác nhận điều này một lần — hãy dùng tự động hóa Square một cách cân nhắc và tự chịu trách nhiệm.
+
+Khi đã vào, nhóm **Reply** cho bạn bốn cách tương tác:
+
+1. **Feed** — quét bảng tin Binance Square trực tiếp và reply các bài mới.
+2. **Link** — dán các link bài đăng Binance Square (mỗi link một dòng, ví dụ `https://www.binance.com/square/post/123…`) và reply từng bài.
+3. **Search** — reply các bài Square gợi ý cho một chủ đề bạn nhập.
+4. **Profile** — reply các bài mới nhất của một tác giả cụ thể.
+
+Chọn một chế độ (các thẻ ở trang chủ chọn sẵn giúp bạn, và có bộ chuyển để đổi), rồi nhấn **Start on Binance Square** — mở một tab Square trước nếu chưa. Tiến trình và bản nháp hiện ngay trong màn hình.
+
+Hai công cụ nữa nằm cạnh Reply:
+
+- **KOL monitor** — thêm tác giả Square theo handle, chọn ai để theo dõi, và reply bài mới của họ ngay khi xuất hiện. Ở đây cũng có công tắc **Auto-like posts**.
+- **Daily tasks** — chạy các nhiệm vụ hằng ngày của Rewards-Hub trên Square (điểm danh, đọc bài, chia sẻ, theo dõi) để kiếm điểm.
+
+> Binance Square dùng cài đặt AI chung của bạn (nhà cung cấp, ngôn ngữ, phong cách viết, custom prompt). Nó **không** dùng bộ lọc điểm InfoFi — các bộ lọc đó chỉ có trên X và Farcaster.
+
+**Nền tảng:** Chỉ Binance Square.
 
 ---
 
